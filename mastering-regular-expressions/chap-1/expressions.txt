@@ -1,0 +1,9 @@
+egrep "^(From|Subject|Date):" mailbox
+
+egrep -i "^(From|Subject|Date):" mailbox
+
+egrep "\<Subject\>" mailbox
+
+egrep "July? (fourth|4(th)?)" date
+
+egrep -i "\<[a-z]+ *\1\>" mailbox
