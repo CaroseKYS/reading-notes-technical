@@ -1,0 +1,29 @@
+function (input, callback){
+  setTimeout(function(){
+    var result;
+
+    try{
+      result = JSON.parse(input);
+    } catch (e){
+      return callback(e);
+    }
+
+    callback(null, callback);
+  }, 500);
+}
+    <section class="suite">
+      <h1>JSON parse</h1>
+      <dl>
+        <dt>传入正确的数据, 不应当抛出异常.</dt>
+        <dd><pre><code>parser.parseAsync(JSON.stringify({name: 'ttt'}), function(err, data){
+  assert.equal(null);
+  done();
+});</code></pre></dd>
+        <dt>传入错误数据, 应当抛出除异常。</dt>
+        <dd><pre><code>parser.parseAsync('{&quot;name&quot;: &quot;jack&quot;}}', function(err, data){
+  assert.ifError(data);
+  assert.notEqual(err, null);
+  done();
+});</code></pre></dd>
+      </dl>
+    </section>
