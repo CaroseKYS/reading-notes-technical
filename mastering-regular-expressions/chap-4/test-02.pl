@@ -1,6 +1,7 @@
-$url = "http://localhost:3000/user?dialog=true";
+$url = "http://www.leshui365.com";
+# $url = "http://localhost:3000/user?dialog=true";
 
-if($url =~ m{^http://([^/:]*)(?::(\d+))?(/.*)?}i){
+if($url =~ m{^http://([^/:]*)(?::(\d+))?(/.*)?$}i){
   my $host = $1;
   my $port = $2;
   my $path = $3;
