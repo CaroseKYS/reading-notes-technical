@@ -17,7 +17,7 @@ public class test_04{
     
     String NOT_IN = ";\"'<>()\\[\\]{}\\s\\x7F-\\xFF";
     String NOT_END = "!.,?";
-    String ANYWHERE = "[^" + NOT_IN + NOT_END + "]";
+    String ANYWHERE = "[^" + NOT_END + NOT_IN + "]";
     String EMBEDDED = "[" + NOT_END + "]";
     String UrlPath = "/" + ANYWHERE + "*(" + EMBEDDED + "+" + ANYWHERE + "+)*";
     String Url = "(?x:                                                    \n" + 
@@ -32,7 +32,7 @@ public class test_04{
                  "  (?: :\\d+ )?                                          \n" +
                  "                                                        \n" + 
                  "   # 下面的部分可能出现， 以/开头                       \n" +
-                 "  (?:  )" + UrlPath + ")?                               \n" +
+                 "  (?:   " + UrlPath + ")?                               \n" +
                  ")";
     
     System.out.println(Url);
