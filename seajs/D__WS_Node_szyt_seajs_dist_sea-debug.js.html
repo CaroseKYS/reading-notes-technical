@@ -1,0 +1,1400 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0059)file:///C:/users/admini~1/appdata/local/temp/tmp8vhojg.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>D:\WS_Node\szyt\seajs\dist\sea-debug.js</title>
+<style>
+.highlight .hll { background-color: #ffffcc }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+.highlight * { font-family: monospace; }
+.highlight { font-size: 90%; }
+.highlight { line-height: normal; }
+.highlight .err { border: none !important }
+</style>
+</head>
+<body onload="">
+<div class="highlight"><pre><span class="lineno">   1 </span><span class="cm">/**</span>
+<span class="lineno">   2 </span><span class="cm"> * Sea.js 3.0.1 | seajs.org/LICENSE.md</span>
+<span class="lineno">   3 </span><span class="cm"> */</span>
+<span class="lineno">   4 </span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">global</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">   5 </span>
+<span class="lineno">   6 </span>  <span class="c1">// Avoid conflicting when `sea.js` is loaded multiple times</span>
+<span class="lineno">   7 </span>  <span class="k">if</span> <span class="p">(</span><span class="nx">global</span><span class="p">.</span><span class="nx">seajs</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">   8 </span>    <span class="k">return</span>
+<span class="lineno">   9 </span>  <span class="p">}</span>
+<span class="lineno">  10 </span>
+<span class="lineno">  11 </span>  <span class="kd">var</span> <span class="nx">seajs</span> <span class="o">=</span> <span class="nx">global</span><span class="p">.</span><span class="nx">seajs</span> <span class="o">=</span> <span class="p">{</span>
+<span class="lineno">  12 </span>    <span class="c1">// The current version of Sea.js being used</span>
+<span class="lineno">  13 </span>    <span class="nx">version</span><span class="o">:</span> <span class="s2">"3.0.1"</span>
+<span class="lineno">  14 </span>  <span class="p">}</span>
+<span class="lineno">  15 </span>
+<span class="lineno">  16 </span>  <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">seajs</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="lineno">  17 </span>
+<span class="lineno">  18 </span>
+<span class="lineno">  19 </span>  <span class="cm">/**</span>
+<span class="lineno">  20 </span><span class="cm">   * util-lang.js - The minimal language enhancement</span>
+<span class="lineno">  21 </span><span class="cm">   */</span>
+<span class="lineno">  22 </span>
+<span class="lineno">  23 </span>  <span class="kd">function</span> <span class="nx">isType</span><span class="p">(</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">  24 </span>    <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">  25 </span>      <span class="k">return</span> <span class="p">{}.</span><span class="nx">toString</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"</span><span class="cp">[</span><span class="nb">object</span> <span class="s2">" + type + "</span><span class="cp">]</span><span class="s2">"</span>
+<span class="lineno">  26 </span>    <span class="p">}</span>
+<span class="lineno">  27 </span>  <span class="p">}</span>
+<span class="lineno">  28 </span>
+<span class="lineno">  29 </span>  <span class="kd">var</span> <span class="nx">isObject</span> <span class="o">=</span> <span class="nx">isType</span><span class="p">(</span><span class="s2">"Object"</span><span class="p">)</span>
+<span class="lineno">  30 </span>  <span class="kd">var</span> <span class="nx">isString</span> <span class="o">=</span> <span class="nx">isType</span><span class="p">(</span><span class="s2">"String"</span><span class="p">)</span>
+<span class="lineno">  31 </span>  <span class="kd">var</span> <span class="nx">isArray</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span> <span class="o">||</span> <span class="nx">isType</span><span class="p">(</span><span class="s2">"Array"</span><span class="p">)</span>
+<span class="lineno">  32 </span>  <span class="kd">var</span> <span class="nx">isFunction</span> <span class="o">=</span> <span class="nx">isType</span><span class="p">(</span><span class="s2">"Function"</span><span class="p">)</span>
+<span class="lineno">  33 </span>  <span class="kd">var</span> <span class="nx">isUndefined</span> <span class="o">=</span> <span class="nx">isType</span><span class="p">(</span><span class="s2">"Undefined"</span><span class="p">)</span>
+<span class="lineno">  34 </span>
+<span class="lineno">  35 </span>  <span class="kd">var</span> <span class="nx">_cid</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="lineno">  36 </span>  <span class="kd">function</span> <span class="nx">cid</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">  37 </span>    <span class="k">return</span> <span class="nx">_cid</span><span class="o">++</span>
+<span class="lineno">  38 </span>  <span class="p">}</span>
+<span class="lineno">  39 </span>
+<span class="lineno">  40 </span>  <span class="cm">/**</span>
+<span class="lineno">  41 </span><span class="cm">   * util-events.js - The minimal events support</span>
+<span class="lineno">  42 </span><span class="cm">   */</span>
+<span class="lineno">  43 </span>
+<span class="lineno">  44 </span>  <span class="kd">var</span> <span class="nx">events</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">events</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="lineno">  45 </span>
+<span class="lineno">  46 </span>  <span class="c1">// Bind event</span>
+<span class="lineno">  47 </span>  <span class="nx">seajs</span><span class="p">.</span><span class="nx">on</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">  48 </span>    <span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">events</span><span class="cp">[</span><span class="nx">name</span><span class="cp">]</span> <span class="o">||</span> <span class="p">(</span><span class="nx">events</span><span class="cp">[</span><span class="nx">name</span><span class="cp">]</span> <span class="o">=</span> <span class="cp">[]</span><span class="p">)</span>
+<span class="lineno">  49 </span>    <span class="nx">list</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span>
+<span class="lineno">  50 </span>    <span class="k">return</span> <span class="nx">seajs</span>
+<span class="lineno">  51 </span>  <span class="p">}</span>
+<span class="lineno">  52 </span>
+<span class="lineno">  53 </span>  <span class="c1">// Remove event. If `callback` is undefined, remove all callbacks for the</span>
+<span class="lineno">  54 </span>  <span class="c1">// event. If `event` and `callback` are both undefined, remove all callbacks</span>
+<span class="lineno">  55 </span>  <span class="c1">// for all events</span>
+<span class="lineno">  56 </span>  <span class="nx">seajs</span><span class="p">.</span><span class="nx">off</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">  57 </span>    <span class="c1">// Remove *all* events</span>
+<span class="lineno">  58 </span>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nx">name</span> <span class="o">||</span> <span class="nx">callback</span><span class="p">))</span> <span class="p">{</span>
+<span class="lineno">  59 </span>      <span class="nx">events</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">events</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="lineno">  60 </span>      <span class="k">return</span> <span class="nx">seajs</span>
+<span class="lineno">  61 </span>    <span class="p">}</span>
+<span class="lineno">  62 </span>
+<span class="lineno">  63 </span>    <span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">events</span><span class="cp">[</span><span class="nx">name</span><span class="cp">]</span>
+<span class="lineno">  64 </span>    <span class="k">if</span> <span class="p">(</span><span class="nx">list</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">  65 </span>      <span class="k">if</span> <span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">  66 </span>        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">  67 </span>          <span class="k">if</span> <span class="p">(</span><span class="nx">list</span><span class="cp">[</span><span class="nx">i</span><span class="cp">]</span> <span class="o">===</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">  68 </span>            <span class="nx">list</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="lineno">  69 </span>          <span class="p">}</span>
+<span class="lineno">  70 </span>        <span class="p">}</span>
+<span class="lineno">  71 </span>      <span class="p">}</span>
+<span class="lineno">  72 </span>      <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">  73 </span>        <span class="k">delete</span> <span class="nx">events</span><span class="cp">[</span><span class="nx">name</span><span class="cp">]</span>
+<span class="lineno">  74 </span>      <span class="p">}</span>
+<span class="lineno">  75 </span>    <span class="p">}</span>
+<span class="lineno">  76 </span>
+<span class="lineno">  77 </span>    <span class="k">return</span> <span class="nx">seajs</span>
+<span class="lineno">  78 </span>  <span class="p">}</span>
+<span class="lineno">  79 </span>
+<span class="lineno">  80 </span>  <span class="c1">// Emit event, firing all bound callbacks. Callbacks receive the same</span>
+<span class="lineno">  81 </span>  <span class="c1">// arguments as `emit` does, apart from the event name</span>
+<span class="lineno">  82 </span>  <span class="c1">//事件的回调函数链保存在seajs.data.events中；</span>
+<span class="lineno">  83 </span>  <span class="c1">//以事件名称为key，Array对象保存的回调函数链为value</span>
+<span class="lineno">  84 </span>  <span class="kd">var</span> <span class="nx">emit</span> <span class="o">=</span> <span class="nx">seajs</span><span class="p">.</span><span class="nx">emit</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">  85 </span>    <span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">events</span><span class="cp">[</span><span class="nx">name</span><span class="cp">]</span>
+<span class="lineno">  86 </span>
+<span class="lineno">  87 </span>    <span class="k">if</span> <span class="p">(</span><span class="nx">list</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">  88 </span>      <span class="c1">// Copy callback lists to prevent modification</span>
+<span class="lineno">  89 </span>      <span class="nx">list</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">slice</span><span class="p">()</span>
+<span class="lineno">  90 </span>
+<span class="lineno">  91 </span>      <span class="c1">// Execute event callbacks, use index because it's the faster.</span>
+<span class="lineno">  92 </span>      <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">  93 </span>        <span class="nx">list</span><span class="cp">[</span><span class="nx">i</span><span class="cp">]</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+<span class="lineno">  94 </span>      <span class="p">}</span>
+<span class="lineno">  95 </span>    <span class="p">}</span>
+<span class="lineno">  96 </span>
+<span class="lineno">  97 </span>    <span class="k">return</span> <span class="nx">seajs</span>
+<span class="lineno">  98 </span>  <span class="p">}</span>
+<span class="lineno">  99 </span>
+<span class="lineno"> 100 </span>  <span class="cm">/**</span>
+<span class="lineno"> 101 </span><span class="cm">   * util-path.js - The utilities for operating path such as id, uri</span>
+<span class="lineno"> 102 </span><span class="cm">   */</span>
+<span class="lineno"> 103 </span>
+<span class="lineno"> 104 </span>  <span class="cm">/*dirname 方法使用的正则表达式*/</span>
+<span class="lineno"> 105 </span>  <span class="kd">var</span> <span class="nx">DIRNAME_RE</span> <span class="o">=</span> <span class="cm">/</span><span class="cp">[</span><span class="p">^</span><span class="o">?</span><span class="err">#</span><span class="cp">]</span><span class="cm">*\// //匹配除了 “?#” 两个字符之外的任意多个字符并以”/”结尾的字符串</span>
+<span class="lineno"> 106 </span>
+<span class="lineno"> 107 </span><span class="cm">  /*realpath 方法使用的正则表达式*/</span>
+<span class="lineno"> 108 </span>  <span class="kd">var</span> <span class="nx">DOT_RE</span> <span class="o">=</span> <span class="sr">/\/\.\//g</span> <span class="c1">//全局匹配  /./</span>
+<span class="lineno"> 109 </span>  <span class="kd">var</span> <span class="nx">DOUBLE_DOT_RE</span> <span class="o">=</span> <span class="sr">/\/</span><span class="cp">[</span><span class="p">^</span><span class="o">/</span><span class="cp">]</span><span class="sr">+\/\.\.\//</span> <span class="c1">//匹配 /目录名/../</span>
+<span class="lineno"> 110 </span>  <span class="kd">var</span> <span class="nx">MULTI_SLASH_RE</span> <span class="o">=</span> <span class="sr">/(</span><span class="cp">[</span><span class="p">^:</span><span class="o">/</span><span class="cp">]</span><span class="sr">)\/+\//g</span> <span class="c1">//全局匹配非 “: /” 后面的双(两个以上)斜杠 </span>
+<span class="lineno"> 111 </span>
+<span class="lineno"> 112 </span>  <span class="c1">// Extract the directory portion of a path 提取目录的一部分</span>
+<span class="lineno"> 113 </span>  <span class="c1">// dirname("a/b/c.js?t=123#xx/zz") ==&gt; "a/b/"</span>
+<span class="lineno"> 114 </span>  <span class="c1">// ref: http://jsperf.com/regex-vs-split/2</span>
+<span class="lineno"> 115 </span>  <span class="kd">function</span> <span class="nx">dirname</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 116 </span>    <span class="k">return</span> <span class="nx">path</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">DIRNAME_RE</span><span class="p">)</span><span class="cp">[</span><span class="mi">0</span><span class="cp">]</span>
+<span class="lineno"> 117 </span>  <span class="p">}</span>
+<span class="lineno"> 118 </span>
+<span class="lineno"> 119 </span>  <span class="c1">// Canonicalize a path</span>
+<span class="lineno"> 120 </span>  <span class="c1">// realpath("http://test.com/a//./b/../c") ==&gt; "http://test.com/a/c"</span>
+<span class="lineno"> 121 </span>  <span class="kd">function</span> <span class="nx">realpath</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 122 </span>    <span class="c1">// /a/b/./c/./d ==&gt; /a/b/c/d</span>
+<span class="lineno"> 123 </span>    <span class="nx">path</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">DOT_RE</span><span class="p">,</span> <span class="s2">"/"</span><span class="p">)</span>
+<span class="lineno"> 124 </span>
+<span class="lineno"> 125 </span>    <span class="cm">/*</span>
+<span class="lineno"> 126 </span><span class="cm">      @author wh1100717</span>
+<span class="lineno"> 127 </span><span class="cm">      a//b/c ==&gt; a/b/c</span>
+<span class="lineno"> 128 </span><span class="cm">      a///b/////c ==&gt; a/b/c</span>
+<span class="lineno"> 129 </span><span class="cm">      DOUBLE_DOT_RE matches a/b/c//../d path correctly only if replace // with / first</span>
+<span class="lineno"> 130 </span><span class="cm">    */</span>
+<span class="lineno"> 131 </span>    <span class="nx">path</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">MULTI_SLASH_RE</span><span class="p">,</span> <span class="s2">"$1/"</span><span class="p">)</span>
+<span class="lineno"> 132 </span>
+<span class="lineno"> 133 </span>    <span class="c1">// a/b/c/../../d  ==&gt;  a/b/../d  ==&gt;  a/d</span>
+<span class="lineno"> 134 </span>    <span class="c1">// path.match==&gt;在全局模式下返回一个匹配的字符串数组</span>
+<span class="lineno"> 135 </span>    <span class="c1">// 使用while的原因是要一层一层的往上退，每次循环向上退一级目录。</span>
+<span class="lineno"> 136 </span>    <span class="k">while</span> <span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">DOUBLE_DOT_RE</span><span class="p">))</span> <span class="p">{</span>
+<span class="lineno"> 137 </span>      <span class="nx">path</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">DOUBLE_DOT_RE</span><span class="p">,</span> <span class="s2">"/"</span><span class="p">)</span>
+<span class="lineno"> 138 </span>    <span class="p">}</span>
+<span class="lineno"> 139 </span>
+<span class="lineno"> 140 </span>    <span class="k">return</span> <span class="nx">path</span>
+<span class="lineno"> 141 </span>  <span class="p">}</span>
+<span class="lineno"> 142 </span>
+<span class="lineno"> 143 </span>  <span class="c1">// Normalize an id</span>
+<span class="lineno"> 144 </span>  <span class="c1">// 用于标准化id，即用于解决模块文件后缀名的问题。 </span>
+<span class="lineno"> 145 </span>  <span class="c1">// SeaJS 在解析模块标识时， 都会自动添加 JS 扩展名（”.js”）。</span>
+<span class="lineno"> 146 </span>  <span class="c1">// 除非在路径中出现问号(?)或者以斜杠(/)或井号(#)结尾，</span>
+<span class="lineno"> 147 </span>  <span class="c1">// 如果不想自动添加扩展名，</span>
+<span class="lineno"> 148 </span>  <span class="c1">// 最简单的方法是， 在路径末尾加上井号（”#”）。</span>
+<span class="lineno"> 149 </span>  <span class="c1">// 以'.js'结尾</span>
+<span class="lineno"> 150 </span>  <span class="c1">// normalize("path/to/a") ==&gt; "path/to/a.js"</span>
+<span class="lineno"> 151 </span>  <span class="c1">// NOTICE: substring is faster than negative slice and RegExp</span>
+<span class="lineno"> 152 </span>  <span class="kd">function</span> <span class="nx">normalize</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 153 </span>    <span class="kd">var</span> <span class="nx">last</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="lineno"> 154 </span>    <span class="kd">var</span> <span class="nx">lastC</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">(</span><span class="nx">last</span><span class="p">)</span>
+<span class="lineno"> 155 </span>
+<span class="lineno"> 156 </span>    <span class="c1">// If the uri ends with `#`, just return it without '#'</span>
+<span class="lineno"> 157 </span>    <span class="k">if</span> <span class="p">(</span><span class="nx">lastC</span> <span class="o">===</span> <span class="mi">35</span> <span class="cm">/* "#" */</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 158 </span>      <span class="k">return</span> <span class="nx">path</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">last</span><span class="p">)</span>
+<span class="lineno"> 159 </span>    <span class="p">}</span>
+<span class="lineno"> 160 </span>
+<span class="lineno"> 161 </span>    <span class="k">return</span> <span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">last</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">===</span> <span class="s2">".js"</span> <span class="o">||</span>
+<span class="lineno"> 162 </span>        <span class="nx">path</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">"?"</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">||</span>
+<span class="lineno"> 163 </span>        <span class="nx">lastC</span> <span class="o">===</span> <span class="mi">47</span> <span class="cm">/* "/" */</span><span class="p">)</span> <span class="o">?</span> <span class="nx">path</span> <span class="o">:</span> <span class="nx">path</span> <span class="o">+</span> <span class="s2">".js"</span>
+<span class="lineno"> 164 </span>  <span class="p">}</span>
+<span class="lineno"> 165 </span>
+<span class="lineno"> 166 </span>  <span class="c1">//不能以"/"和":"开头，并且结尾必须是"/"后面跟着若干字符(数量至少一个)</span>
+<span class="lineno"> 167 </span>  <span class="c1">//用于在解析id时将键与后面的路径分离开</span>
+<span class="lineno"> 168 </span>  <span class="c1">//      /^(</span><span class="cp">[</span><span class="p">^</span><span class="o">/</span><span class="p">:</span><span class="cp">]</span><span class="c1">+)(\/.+)$/.test("dd/")  ==&gt;   false</span>
+<span class="lineno"> 169 </span>  <span class="c1">//      /^(</span><span class="cp">[</span><span class="p">^</span><span class="o">/</span><span class="p">:</span><span class="cp">]</span><span class="c1">+)(\/.+)$/.test("dd/dd/.s")  ==&gt; true</span>
+<span class="lineno"> 170 </span>  <span class="c1">//      /^(</span><span class="cp">[</span><span class="p">^</span><span class="o">/</span><span class="p">:</span><span class="cp">]</span><span class="c1">+)(\/.+)$/.test("s:/ss/dd")  ==&gt;false</span>
+<span class="lineno"> 171 </span>  <span class="c1">//      /^(</span><span class="cp">[</span><span class="p">^</span><span class="o">/</span><span class="p">:</span><span class="cp">]</span><span class="c1">+)(\/.+)$/.test("s/ss/dd:")  ==&gt;true</span>
+<span class="lineno"> 172 </span>  <span class="kd">var</span> <span class="nx">PATHS_RE</span> <span class="o">=</span> <span class="sr">/^(</span><span class="cp">[</span><span class="p">^</span><span class="o">/</span><span class="p">:</span><span class="cp">]</span><span class="sr">+)(\/.+)$/</span>
+<span class="lineno"> 173 </span>  <span class="c1">//匹配变量，匹配{}对象</span>
+<span class="lineno"> 174 </span>  <span class="kd">var</span> <span class="nx">VARS_RE</span> <span class="o">=</span> <span class="sr">/{(</span><span class="cp">[</span><span class="p">^{</span><span class="cp">]</span><span class="sr">+)}/g</span>
+<span class="lineno"> 175 </span>
+<span class="lineno"> 176 </span>  <span class="c1">//解析seajs.config({})中的alias配置</span>
+<span class="lineno"> 177 </span>  <span class="kd">function</span> <span class="nx">parseAlias</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 178 </span>    <span class="kd">var</span> <span class="nx">alias</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">alias</span>
+<span class="lineno"> 179 </span>    <span class="k">return</span> <span class="nx">alias</span> <span class="o">&amp;&amp;</span> <span class="nx">isString</span><span class="p">(</span><span class="nx">alias</span><span class="cp">[</span><span class="nx">id</span><span class="cp">]</span><span class="p">)</span> <span class="o">?</span> <span class="nx">alias</span><span class="cp">[</span><span class="nx">id</span><span class="cp">]</span> <span class="o">:</span> <span class="nx">id</span>
+<span class="lineno"> 180 </span>  <span class="p">}</span>
+<span class="lineno"> 181 </span>
+<span class="lineno"> 182 </span>  <span class="c1">//根据设置的data.paths转化id</span>
+<span class="lineno"> 183 </span>  <span class="kd">function</span> <span class="nx">parsePaths</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 184 </span>    <span class="kd">var</span> <span class="nx">paths</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">paths</span>
+<span class="lineno"> 185 </span>    <span class="kd">var</span> <span class="nx">m</span> <span class="c1">//正则表达式的匹配结果</span>
+<span class="lineno"> 186 </span>
+<span class="lineno"> 187 </span>    <span class="cm">/*解析出paths配置中的键和个性化的相对路径*/</span>
+<span class="lineno"> 188 </span>    <span class="k">if</span> <span class="p">(</span><span class="nx">paths</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">m</span> <span class="o">=</span> <span class="nx">id</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">PATHS_RE</span><span class="p">))</span> <span class="o">&amp;&amp;</span> <span class="nx">isString</span><span class="p">(</span><span class="nx">paths</span><span class="cp">[</span><span class="nx">m</span><span class="err">[</span><span class="mi">1</span><span class="cp">]</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno"> 189 </span>      <span class="c1">//m</span><span class="cp">[</span><span class="mi">1</span><span class="cp">]</span><span class="c1">: paths配置中对应的键</span>
+<span class="lineno"> 190 </span>      <span class="c1">//m</span><span class="cp">[</span><span class="mi">2</span><span class="cp">]</span><span class="c1">: 相对于path的路径</span>
+<span class="lineno"> 191 </span>      <span class="nx">id</span> <span class="o">=</span> <span class="nx">paths</span><span class="cp">[</span><span class="nx">m</span><span class="err">[</span><span class="mi">1</span><span class="cp">]</span><span class="p">]</span> <span class="o">+</span> <span class="nx">m</span><span class="cp">[</span><span class="mi">2</span><span class="cp">]</span>
+<span class="lineno"> 192 </span>    <span class="p">}</span>
+<span class="lineno"> 193 </span>
+<span class="lineno"> 194 </span>    <span class="k">return</span> <span class="nx">id</span>
+<span class="lineno"> 195 </span>  <span class="p">}</span>
+<span class="lineno"> 196 </span>
+<span class="lineno"> 197 </span>  <span class="c1">//根据设置的vars设置id</span>
+<span class="lineno"> 198 </span>  <span class="c1">//vars 有些场景下，模块路径在运行时才能确定，这时可以使用vars变量来配置</span>
+<span class="lineno"> 199 </span>  <span class="c1">//vars 的详细用法参考 https://github.com/seajs/seajs/issues/262</span>
+<span class="lineno"> 200 </span>  <span class="kd">function</span> <span class="nx">parseVars</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 201 </span>    <span class="kd">var</span> <span class="nx">vars</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">vars</span>
+<span class="lineno"> 202 </span>
+<span class="lineno"> 203 </span>    <span class="k">if</span> <span class="p">(</span><span class="nx">vars</span> <span class="o">&amp;&amp;</span> <span class="nx">id</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">"{"</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 204 </span>      <span class="nx">id</span> <span class="o">=</span> <span class="nx">id</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">VARS_RE</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">m</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 205 </span>        <span class="k">return</span> <span class="nx">isString</span><span class="p">(</span><span class="nx">vars</span><span class="cp">[</span><span class="nx">key</span><span class="cp">]</span><span class="p">)</span> <span class="o">?</span> <span class="nx">vars</span><span class="cp">[</span><span class="nx">key</span><span class="cp">]</span> <span class="o">:</span> <span class="nx">m</span>
+<span class="lineno"> 206 </span>      <span class="p">})</span>
+<span class="lineno"> 207 </span>    <span class="p">}</span>
+<span class="lineno"> 208 </span>
+<span class="lineno"> 209 </span>    <span class="k">return</span> <span class="nx">id</span>
+<span class="lineno"> 210 </span>  <span class="p">}</span>
+<span class="lineno"> 211 </span>
+<span class="lineno"> 212 </span>  <span class="c1">//根据在map中设置的规则转换uri</span>
+<span class="lineno"> 213 </span>  <span class="c1">//配置项map的用法</span>
+<span class="lineno"> 214 </span>  <span class="cm">/*seajs.config({</span>
+<span class="lineno"> 215 </span><span class="cm">    map: </span><span class="cp">[</span>
+<span class="lineno"> 216 </span>      <span class="err">[</span> <span class="s1">'.js'</span><span class="p">,</span> <span class="s1">'-debug.js'</span> <span class="cp">]</span><span class="cm"></span>
+<span class="lineno"> 217 </span><span class="cm">    ]</span>
+<span class="lineno"> 218 </span><span class="cm">  });</span>
+<span class="lineno"> 219 </span><span class="cm">  define(function(require, exports, module) {</span>
+<span class="lineno"> 220 </span>
+<span class="lineno"> 221 </span><span class="cm">    var a = require('./a');</span>
+<span class="lineno"> 222 </span><span class="cm">    //=&gt; 加载的是 path/to/a-debug.js</span>
+<span class="lineno"> 223 </span>
+<span class="lineno"> 224 </span><span class="cm">  });*/</span>
+<span class="lineno"> 225 </span>  <span class="c1">//map数组的元素可以是一个数组(含有2个元素)也可以是一个函数(传入的参数时uri)</span>
+<span class="lineno"> 226 </span>  <span class="kd">function</span> <span class="nx">parseMap</span><span class="p">(</span><span class="nx">uri</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 227 </span>    <span class="kd">var</span> <span class="nx">map</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">map</span>
+<span class="lineno"> 228 </span>    <span class="kd">var</span> <span class="nx">ret</span> <span class="o">=</span> <span class="nx">uri</span>
+<span class="lineno"> 229 </span>
+<span class="lineno"> 230 </span>    <span class="k">if</span> <span class="p">(</span><span class="nx">map</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 231 </span>      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">map</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 232 </span>        <span class="kd">var</span> <span class="nx">rule</span> <span class="o">=</span> <span class="nx">map</span><span class="cp">[</span><span class="nx">i</span><span class="cp">]</span>
+<span class="lineno"> 233 </span>
+<span class="lineno"> 234 </span>        <span class="nx">ret</span> <span class="o">=</span> <span class="nx">isFunction</span><span class="p">(</span><span class="nx">rule</span><span class="p">)</span> <span class="o">?</span>
+<span class="lineno"> 235 </span>            <span class="p">(</span><span class="nx">rule</span><span class="p">(</span><span class="nx">uri</span><span class="p">)</span> <span class="o">||</span> <span class="nx">uri</span><span class="p">)</span> <span class="o">:</span>
+<span class="lineno"> 236 </span>            <span class="nx">uri</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">rule</span><span class="cp">[</span><span class="mi">0</span><span class="cp">]</span><span class="p">,</span> <span class="nx">rule</span><span class="cp">[</span><span class="mi">1</span><span class="cp">]</span><span class="p">)</span>
+<span class="lineno"> 237 </span>
+<span class="lineno"> 238 </span>        <span class="c1">// Only apply the first matched rule</span>
+<span class="lineno"> 239 </span>        <span class="k">if</span> <span class="p">(</span><span class="nx">ret</span> <span class="o">!==</span> <span class="nx">uri</span><span class="p">)</span> <span class="k">break</span>
+<span class="lineno"> 240 </span>      <span class="p">}</span>
+<span class="lineno"> 241 </span>    <span class="p">}</span>
+<span class="lineno"> 242 </span>
+<span class="lineno"> 243 </span>    <span class="k">return</span> <span class="nx">ret</span>
+<span class="lineno"> 244 </span>  <span class="p">}</span>
+<span class="lineno"> 245 </span>
+<span class="lineno"> 246 </span>  <span class="c1">//匹配包含":/"或者"//{char}"开头的字符 {char}代表任意一个字符</span>
+<span class="lineno"> 247 </span>  <span class="kd">var</span> <span class="nx">ABSOLUTE_RE</span> <span class="o">=</span> <span class="sr">/^\/\/.|:\//</span>
+<span class="lineno"> 248 </span>  <span class="c1">//根目录匹配</span>
+<span class="lineno"> 249 </span>  <span class="c1">//ROOT_DIR_RE.exec("http://www.baidu.com/zhidao/answer/") ==&gt;http://www.baidu.com/</span>
+<span class="lineno"> 250 </span>  <span class="kd">var</span> <span class="nx">ROOT_DIR_RE</span> <span class="o">=</span> <span class="sr">/^.*?\/\/.*?\//</span>
+<span class="lineno"> 251 </span>
+<span class="lineno"> 252 </span>  <span class="c1">//refUri表示解析相对路径的基础uri</span>
+<span class="lineno"> 253 </span>  <span class="kd">function</span> <span class="nx">addBase</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">refUri</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 254 </span>    <span class="kd">var</span> <span class="nx">ret</span>
+<span class="lineno"> 255 </span>    <span class="kd">var</span> <span class="nx">first</span> <span class="o">=</span> <span class="nx">id</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="lineno"> 256 </span>
+<span class="lineno"> 257 </span>    <span class="c1">// 如果以":/"或"//{char}"开头,则直接使用id</span>
+<span class="lineno"> 258 </span>    <span class="c1">// Absolute</span>
+<span class="lineno"> 259 </span>    <span class="k">if</span> <span class="p">(</span><span class="nx">ABSOLUTE_RE</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">id</span><span class="p">))</span> <span class="p">{</span>
+<span class="lineno"> 260 </span>      <span class="nx">ret</span> <span class="o">=</span> <span class="nx">id</span>
+<span class="lineno"> 261 </span>    <span class="p">}</span>
+<span class="lineno"> 262 </span>    <span class="cm">/*如果以"."开头, 根据refuri解析相对路径*/</span>
+<span class="lineno"> 263 </span>    <span class="c1">// Relative</span>
+<span class="lineno"> 264 </span>    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">first</span> <span class="o">===</span> <span class="mi">46</span> <span class="cm">/* "." */</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 265 </span>      <span class="nx">ret</span> <span class="o">=</span> <span class="p">(</span><span class="nx">refUri</span> <span class="o">?</span> <span class="nx">dirname</span><span class="p">(</span><span class="nx">refUri</span><span class="p">)</span> <span class="o">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">cwd</span><span class="p">)</span> <span class="o">+</span> <span class="nx">id</span>
+<span class="lineno"> 266 </span>    <span class="p">}</span>
+<span class="lineno"> 267 </span>    <span class="cm">/*如果以"/"开头,则是根路径, 根据当前url的根路径进行解析。*/</span>
+<span class="lineno"> 268 </span>    <span class="c1">// Root</span>
+<span class="lineno"> 269 </span>    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">first</span> <span class="o">===</span> <span class="mi">47</span> <span class="cm">/* "/" */</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 270 </span>      <span class="kd">var</span> <span class="nx">m</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">cwd</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">ROOT_DIR_RE</span><span class="p">)</span> <span class="c1">//获取当前所在url的应用根路径</span>
+<span class="lineno"> 271 </span>      <span class="nx">ret</span> <span class="o">=</span> <span class="nx">m</span> <span class="o">?</span> <span class="nx">m</span><span class="cp">[</span><span class="mi">0</span><span class="cp">]</span> <span class="o">+</span> <span class="nx">id</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">:</span> <span class="nx">id</span>
+<span class="lineno"> 272 </span>    <span class="p">}</span>
+<span class="lineno"> 273 </span>    <span class="c1">// Top-level</span>
+<span class="lineno"> 274 </span>    <span class="c1">// 如果不是上述任何情况，则直接拼接base路径</span>
+<span class="lineno"> 275 </span>    <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 276 </span>      <span class="nx">ret</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">base</span> <span class="o">+</span> <span class="nx">id</span>
+<span class="lineno"> 277 </span>    <span class="p">}</span>
+<span class="lineno"> 278 </span>
+<span class="lineno"> 279 </span>    <span class="c1">// Add default protocol when uri begins with "//"</span>
+<span class="lineno"> 280 </span>    <span class="k">if</span> <span class="p">(</span><span class="nx">ret</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">"//"</span><span class="p">)</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 281 </span>      <span class="nx">ret</span> <span class="o">=</span> <span class="nx">location</span><span class="p">.</span><span class="nx">protocol</span> <span class="o">+</span> <span class="nx">ret</span>
+<span class="lineno"> 282 </span>    <span class="p">}</span>
+<span class="lineno"> 283 </span>
+<span class="lineno"> 284 </span>    <span class="k">return</span> <span class="nx">realpath</span><span class="p">(</span><span class="nx">ret</span><span class="p">)</span>
+<span class="lineno"> 285 </span>  <span class="p">}</span>
+<span class="lineno"> 286 </span>
+<span class="lineno"> 287 </span>  <span class="c1">//通过id来匹配正确的脚本uri地址, 包括自定义的id到缓存中url的解析</span>
+<span class="lineno"> 288 </span>  <span class="kd">function</span> <span class="nx">id2Uri</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">refUri</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 289 </span>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">id</span><span class="p">)</span> <span class="k">return</span> <span class="s2">""</span>
+<span class="lineno"> 290 </span>
+<span class="lineno"> 291 </span>    <span class="nx">id</span> <span class="o">=</span> <span class="nx">parseAlias</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+<span class="lineno"> 292 </span>    <span class="nx">id</span> <span class="o">=</span> <span class="nx">parsePaths</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+<span class="lineno"> 293 </span>    <span class="nx">id</span> <span class="o">=</span> <span class="nx">parseAlias</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+<span class="lineno"> 294 </span>    <span class="nx">id</span> <span class="o">=</span> <span class="nx">parseVars</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+<span class="lineno"> 295 </span>    <span class="nx">id</span> <span class="o">=</span> <span class="nx">parseAlias</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+<span class="lineno"> 296 </span>    <span class="nx">id</span> <span class="o">=</span> <span class="nx">normalize</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+<span class="lineno"> 297 </span>    <span class="nx">id</span> <span class="o">=</span> <span class="nx">parseAlias</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+<span class="lineno"> 298 </span>
+<span class="lineno"> 299 </span>    <span class="kd">var</span> <span class="nx">uri</span> <span class="o">=</span> <span class="nx">addBase</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">refUri</span><span class="p">)</span>
+<span class="lineno"> 300 </span>    <span class="nx">uri</span> <span class="o">=</span> <span class="nx">parseAlias</span><span class="p">(</span><span class="nx">uri</span><span class="p">)</span>
+<span class="lineno"> 301 </span>    <span class="nx">uri</span> <span class="o">=</span> <span class="nx">parseMap</span><span class="p">(</span><span class="nx">uri</span><span class="p">)</span>
+<span class="lineno"> 302 </span>
+<span class="lineno"> 303 </span>    <span class="k">return</span> <span class="nx">uri</span>
+<span class="lineno"> 304 </span>  <span class="p">}</span>
+<span class="lineno"> 305 </span>
+<span class="lineno"> 306 </span>  <span class="c1">// For Developers</span>
+<span class="lineno"> 307 </span>  <span class="c1">// //会利用模块系统的内部机制对传入的字符串参数进行路径解析。</span>
+<span class="lineno"> 308 </span>  <span class="nx">seajs</span><span class="p">.</span><span class="nx">resolve</span> <span class="o">=</span> <span class="nx">id2Uri</span>
+<span class="lineno"> 309 </span>
+<span class="lineno"> 310 </span>  <span class="c1">// Check environment</span>
+<span class="lineno"> 311 </span>  <span class="kd">var</span> <span class="nx">isWebWorker</span> <span class="o">=</span> <span class="k">typeof</span> <span class="nb">window</span> <span class="o">===</span> <span class="s1">'undefined'</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nx">importScripts</span> <span class="o">!==</span> <span class="s1">'undefined'</span> <span class="o">&amp;&amp;</span> <span class="nx">isFunction</span><span class="p">(</span><span class="nx">importScripts</span><span class="p">)</span>
+<span class="lineno"> 312 </span>
+<span class="lineno"> 313 </span>  <span class="c1">// Ignore about:xxx and blob:xxx</span>
+<span class="lineno"> 314 </span>  <span class="kd">var</span> <span class="nx">IGNORE_LOCATION_RE</span> <span class="o">=</span> <span class="sr">/^(about|blob):/</span>
+<span class="lineno"> 315 </span>  <span class="kd">var</span> <span class="nx">loaderDir</span> <span class="c1">//sea.js全路径对应的目录</span>
+<span class="lineno"> 316 </span>  <span class="c1">// Sea.js's full path sea.js的全路径</span>
+<span class="lineno"> 317 </span>  <span class="kd">var</span> <span class="nx">loaderPath</span>
+<span class="lineno"> 318 </span>  <span class="c1">// Location is read-only from web worker, should be ok though</span>
+<span class="lineno"> 319 </span>  <span class="kd">var</span> <span class="nx">cwd</span> <span class="o">=</span> <span class="p">(</span><span class="o">!</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span> <span class="o">||</span> <span class="nx">IGNORE_LOCATION_RE</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">))</span> <span class="o">?</span> <span class="s1">''</span> <span class="o">:</span> <span class="nx">dirname</span><span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">)</span>
+<span class="lineno"> 320 </span>
+<span class="lineno"> 321 </span>  <span class="c1">// 此处的 if和else 用于获取loaderDir和loaderPath</span>
+<span class="lineno"> 322 </span>  <span class="k">if</span> <span class="p">(</span><span class="nx">isWebWorker</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 323 </span>    <span class="c1">// Web worker doesn't create DOM object when loading scripts</span>
+<span class="lineno"> 324 </span>    <span class="c1">// Get sea.js's path by stack trace.</span>
+<span class="lineno"> 325 </span>    <span class="kd">var</span> <span class="nx">stack</span>
+<span class="lineno"> 326 </span>    <span class="k">try</span> <span class="p">{</span>
+<span class="lineno"> 327 </span>      <span class="kd">var</span> <span class="nx">up</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">()</span>
+<span class="lineno"> 328 </span>      <span class="k">throw</span> <span class="nx">up</span>
+<span class="lineno"> 329 </span>    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 330 </span>      <span class="c1">// IE won't set Error.stack until thrown</span>
+<span class="lineno"> 331 </span>      <span class="nx">stack</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">stack</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">'\n'</span><span class="p">)</span>
+<span class="lineno"> 332 </span>    <span class="p">}</span>
+<span class="lineno"> 333 </span>    <span class="c1">// First line is 'Error'</span>
+<span class="lineno"> 334 </span>    <span class="nx">stack</span><span class="p">.</span><span class="nx">shift</span><span class="p">()</span>
+<span class="lineno"> 335 </span>
+<span class="lineno"> 336 </span>    <span class="kd">var</span> <span class="nx">m</span>
+<span class="lineno"> 337 </span>    <span class="c1">// Try match `url:row:col` from stack trace line. Known formats:</span>
+<span class="lineno"> 338 </span>    <span class="c1">// Chrome:  '    at http://localhost:8000/script/sea-worker-debug.js:294:25'</span>
+<span class="lineno"> 339 </span>    <span class="c1">// FireFox: '@http://localhost:8000/script/sea-worker-debug.js:1082:1'</span>
+<span class="lineno"> 340 </span>    <span class="c1">// IE11:    '   at Anonymous function (http://localhost:8000/script/sea-worker-debug.js:295:5)'</span>
+<span class="lineno"> 341 </span>    <span class="c1">// Don't care about older browsers since web worker is an HTML5 feature</span>
+<span class="lineno"> 342 </span>    <span class="kd">var</span> <span class="nx">TRACE_RE</span> <span class="o">=</span> <span class="sr">/.*?((?:http|https|file)(?::\/{2}</span><span class="cp">[</span><span class="o">\</span><span class="nx">w</span><span class="cp">]</span><span class="sr">+)(?:</span><span class="cp">[</span><span class="o">\/|\</span><span class="nx">.</span><span class="cp">]</span><span class="sr">?)(?:</span><span class="cp">[</span><span class="p">^</span><span class="o">\</span><span class="nx">s</span><span class="s2">"]*)).*?/i</span>
+<span class="lineno"> 343 </span><span class="s2">    // Try match `url` (Note: in IE there will be a tailing ')')</span>
+<span class="lineno"> 344 </span><span class="s2">    var URL_RE = /(.*?):\d+:\d+\)?$/</span>
+<span class="lineno"> 345 </span><span class="s2">    // Find url of from stack trace.</span>
+<span class="lineno"> 346 </span><span class="s2">    // Cannot simply read the first one because sometimes we will get:</span>
+<span class="lineno"> 347 </span><span class="s2">    // Error</span>
+<span class="lineno"> 348 </span><span class="s2">    //  at Error (native) &lt;- Here's your problem</span>
+<span class="lineno"> 349 </span><span class="s2">    //  at http://localhost:8000/_site/dist/sea.js:2:4334 &lt;- What we want</span>
+<span class="lineno"> 350 </span><span class="s2">    //  at http://localhost:8000/_site/dist/sea.js:2:8386</span>
+<span class="lineno"> 351 </span><span class="s2">    //  at http://localhost:8000/_site/tests/specs/web-worker/worker.js:3:1</span>
+<span class="lineno"> 352 </span><span class="s2">    while (stack.length &gt; 0) {</span>
+<span class="lineno"> 353 </span><span class="s2">      var top = stack.shift()</span>
+<span class="lineno"> 354 </span><span class="s2">      m = TRACE_RE.exec(top)</span>
+<span class="lineno"> 355 </span><span class="s2">      if (m != null) {</span>
+<span class="lineno"> 356 </span><span class="s2">        break</span>
+<span class="lineno"> 357 </span><span class="s2">      }</span>
+<span class="lineno"> 358 </span><span class="s2">    }</span>
+<span class="lineno"> 359 </span><span class="s2">    var url</span>
+<span class="lineno"> 360 </span><span class="s2">    if (m != null) {</span>
+<span class="lineno"> 361 </span><span class="s2">      // Remove line number and column number</span>
+<span class="lineno"> 362 </span><span class="s2">      // No need to check, can't be wrong at this point</span>
+<span class="lineno"> 363 </span><span class="s2">      var url = URL_RE.exec(m[1])[1]</span>
+<span class="lineno"> 364 </span><span class="s2">    }</span>
+<span class="lineno"> 365 </span><span class="s2">    // Set</span>
+<span class="lineno"> 366 </span><span class="s2">    loaderPath = url</span>
+<span class="lineno"> 367 </span><span class="s2">    // Set loaderDir</span>
+<span class="lineno"> 368 </span><span class="s2">    loaderDir = dirname(url || cwd)</span>
+<span class="lineno"> 369 </span><span class="s2">    // This happens with inline worker.</span>
+<span class="lineno"> 370 </span><span class="s2">    // When entrance script's location.href is a blob url,</span>
+<span class="lineno"> 371 </span><span class="s2">    // cwd will not be available.</span>
+<span class="lineno"> 372 </span><span class="s2">    // Fall back to loaderDir.</span>
+<span class="lineno"> 373 </span><span class="s2">    if (cwd === '') {</span>
+<span class="lineno"> 374 </span><span class="s2">      cwd = loaderDir</span>
+<span class="lineno"> 375 </span><span class="s2">    }</span>
+<span class="lineno"> 376 </span><span class="s2">  }</span>
+<span class="lineno"> 377 </span><span class="s2">  else {</span>
+<span class="lineno"> 378 </span><span class="s2">    var doc = document</span>
+<span class="lineno"> 379 </span><span class="s2">    var scripts = doc.scripts</span>
+<span class="lineno"> 380 </span>
+<span class="lineno"> 381 </span><span class="s2">    // Recommend to add `seajsnode` id for the `sea.js` script element</span>
+<span class="lineno"> 382 </span><span class="s2">    var loaderScript = doc.getElementById("</span><span class="nx">seajsnode</span><span class="s2">") ||</span>
+<span class="lineno"> 383 </span><span class="s2">      scripts[scripts.length - 1]</span>
+<span class="lineno"> 384 </span>
+<span class="lineno"> 385 </span><span class="s2">    function getScriptAbsoluteSrc(node) {</span>
+<span class="lineno"> 386 </span><span class="s2">      return node.hasAttribute ? // non-IE6/7</span>
+<span class="lineno"> 387 </span><span class="s2">        node.src :</span>
+<span class="lineno"> 388 </span><span class="s2">        // see http://msdn.microsoft.com/en-us/library/ms536429(VS.85).aspx</span>
+<span class="lineno"> 389 </span><span class="s2">        node.getAttribute("</span><span class="nx">src</span><span class="s2">", 4)</span>
+<span class="lineno"> 390 </span><span class="s2">    }</span>
+<span class="lineno"> 391 </span><span class="s2">    loaderPath = getScriptAbsoluteSrc(loaderScript)</span>
+<span class="lineno"> 392 </span><span class="s2">    // When `sea.js` is inline, set loaderDir to current working directory</span>
+<span class="lineno"> 393 </span><span class="s2">    loaderDir = dirname(loaderPath || cwd)</span>
+<span class="lineno"> 394 </span><span class="s2">  }</span>
+<span class="lineno"> 395 </span>
+<span class="lineno"> 396 </span><span class="s2">  /**</span>
+<span class="lineno"> 397 </span><span class="s2">   * util-request.js - The utilities for requesting script and style files</span>
+<span class="lineno"> 398 </span><span class="s2">   * ref: tests/research/load-js-css/test.html</span>
+<span class="lineno"> 399 </span><span class="s2">   */</span>
+<span class="lineno"> 400 </span><span class="s2">  //使用webworker加载js脚本</span>
+<span class="lineno"> 401 </span><span class="s2">  if (isWebWorker) {</span>
+<span class="lineno"> 402 </span><span class="s2">    function requestFromWebWorker(url, callback, charset, crossorigin) {</span>
+<span class="lineno"> 403 </span><span class="s2">      // Load with importScripts</span>
+<span class="lineno"> 404 </span><span class="s2">      var error</span>
+<span class="lineno"> 405 </span><span class="s2">      try {</span>
+<span class="lineno"> 406 </span><span class="s2">        importScripts(url)</span>
+<span class="lineno"> 407 </span><span class="s2">      } catch (e) {</span>
+<span class="lineno"> 408 </span><span class="s2">        error = e</span>
+<span class="lineno"> 409 </span><span class="s2">      }</span>
+<span class="lineno"> 410 </span><span class="s2">      callback(error)</span>
+<span class="lineno"> 411 </span><span class="s2">    }</span>
+<span class="lineno"> 412 </span><span class="s2">    // For Developers</span>
+<span class="lineno"> 413 </span><span class="s2">    seajs.request = requestFromWebWorker</span>
+<span class="lineno"> 414 </span><span class="s2">  }</span>
+<span class="lineno"> 415 </span><span class="s2">  else {//创建script标签的方式加载js脚本</span>
+<span class="lineno"> 416 </span><span class="s2">    var doc = document</span>
+<span class="lineno"> 417 </span><span class="s2">    var head = doc.head || doc.getElementsByTagName("</span><span class="nx">head</span><span class="s2">")[0] || doc.documentElement</span>
+<span class="lineno"> 418 </span><span class="s2">    var baseElement = head.getElementsByTagName("</span><span class="nx">base</span><span class="s2">")[0]</span>
+<span class="lineno"> 419 </span>
+<span class="lineno"> 420 </span><span class="s2">    var currentlyAddingScript</span>
+<span class="lineno"> 421 </span>
+<span class="lineno"> 422 </span><span class="s2">    function request(url, callback, charset, crossorigin) {</span>
+<span class="lineno"> 423 </span><span class="s2">      var node = doc.createElement("</span><span class="nx">script</span><span class="s2">")</span>
+<span class="lineno"> 424 </span>
+<span class="lineno"> 425 </span><span class="s2">      if (charset) {</span>
+<span class="lineno"> 426 </span><span class="s2">        node.charset = charset</span>
+<span class="lineno"> 427 </span><span class="s2">      }</span>
+<span class="lineno"> 428 </span>
+<span class="lineno"> 429 </span><span class="s2">      if (!isUndefined(crossorigin)) {</span>
+<span class="lineno"> 430 </span><span class="s2">        node.setAttribute("</span><span class="nx">crossorigin</span><span class="s2">", crossorigin)</span>
+<span class="lineno"> 431 </span><span class="s2">      }</span>
+<span class="lineno"> 432 </span>
+<span class="lineno"> 433 </span><span class="s2">      addOnload(node, callback, url)</span>
+<span class="lineno"> 434 </span>
+<span class="lineno"> 435 </span><span class="s2">      node.async = true</span>
+<span class="lineno"> 436 </span><span class="s2">      node.src = url</span>
+<span class="lineno"> 437 </span>
+<span class="lineno"> 438 </span><span class="s2">      // For some cache cases in IE 6-8, the script executes IMMEDIATELY after</span>
+<span class="lineno"> 439 </span><span class="s2">      // the end of the insert execution, so use `currentlyAddingScript` to</span>
+<span class="lineno"> 440 </span><span class="s2">      // hold current node, for deriving url in `define` call</span>
+<span class="lineno"> 441 </span><span class="s2">      currentlyAddingScript = node</span>
+<span class="lineno"> 442 </span>
+<span class="lineno"> 443 </span><span class="s2">      // ref: #185 &amp; http://dev.jquery.com/ticket/2709</span>
+<span class="lineno"> 444 </span><span class="s2">      baseElement ?</span>
+<span class="lineno"> 445 </span><span class="s2">          head.insertBefore(node, baseElement) :</span>
+<span class="lineno"> 446 </span><span class="s2">          head.appendChild(node)</span>
+<span class="lineno"> 447 </span>
+<span class="lineno"> 448 </span><span class="s2">      currentlyAddingScript = null</span>
+<span class="lineno"> 449 </span><span class="s2">    }</span>
+<span class="lineno"> 450 </span>
+<span class="lineno"> 451 </span><span class="s2">    function addOnload(node, callback, url) {</span>
+<span class="lineno"> 452 </span><span class="s2">      var supportOnload = "</span><span class="nx">onload</span><span class="s2">" in node</span>
+<span class="lineno"> 453 </span>
+<span class="lineno"> 454 </span><span class="s2">      if (supportOnload) {</span>
+<span class="lineno"> 455 </span><span class="s2">        node.onload = onload</span>
+<span class="lineno"> 456 </span><span class="s2">        node.onerror = function() {</span>
+<span class="lineno"> 457 </span><span class="s2">          emit("</span><span class="nx">error</span><span class="s2">", { uri: url, node: node })</span>
+<span class="lineno"> 458 </span><span class="s2">          onload(true)</span>
+<span class="lineno"> 459 </span><span class="s2">        }</span>
+<span class="lineno"> 460 </span><span class="s2">      }</span>
+<span class="lineno"> 461 </span><span class="s2">      else {</span>
+<span class="lineno"> 462 </span><span class="s2">        node.onreadystatechange = function() {</span>
+<span class="lineno"> 463 </span><span class="s2">          if (/loaded|complete/.test(node.readyState)) {</span>
+<span class="lineno"> 464 </span><span class="s2">            onload()</span>
+<span class="lineno"> 465 </span><span class="s2">          }</span>
+<span class="lineno"> 466 </span><span class="s2">        }</span>
+<span class="lineno"> 467 </span><span class="s2">      }</span>
+<span class="lineno"> 468 </span>
+<span class="lineno"> 469 </span><span class="s2">      function onload(error) {</span>
+<span class="lineno"> 470 </span><span class="s2">        // Ensure only run once and handle memory leak in IE</span>
+<span class="lineno"> 471 </span><span class="s2">        // /为了防止在IE中的内存泄漏，在脚本加载完onload之后，会及时移除该脚本</span>
+<span class="lineno"> 472 </span><span class="s2">        node.onload = node.onerror = node.onreadystatechange = null</span>
+<span class="lineno"> 473 </span>
+<span class="lineno"> 474 </span><span class="s2">        // Remove the script to reduce memory leak</span>
+<span class="lineno"> 475 </span><span class="s2">        if (!data.debug) {</span>
+<span class="lineno"> 476 </span><span class="s2">          head.removeChild(node)</span>
+<span class="lineno"> 477 </span><span class="s2">        }</span>
+<span class="lineno"> 478 </span>
+<span class="lineno"> 479 </span><span class="s2">        // Dereference the node</span>
+<span class="lineno"> 480 </span><span class="s2">        node = null</span>
+<span class="lineno"> 481 </span>
+<span class="lineno"> 482 </span><span class="s2">        callback(error)</span>
+<span class="lineno"> 483 </span><span class="s2">      }</span>
+<span class="lineno"> 484 </span><span class="s2">    }</span>
+<span class="lineno"> 485 </span>
+<span class="lineno"> 486 </span><span class="s2">    // For Developers</span>
+<span class="lineno"> 487 </span><span class="s2">    seajs.request = request</span>
+<span class="lineno"> 488 </span>
+<span class="lineno"> 489 </span><span class="s2">  }</span>
+<span class="lineno"> 490 </span>
+<span class="lineno"> 491 </span><span class="s2">  var interactiveScript</span>
+<span class="lineno"> 492 </span>
+<span class="lineno"> 493 </span><span class="s2">  //获取当前正在加载的脚本的dom对象</span>
+<span class="lineno"> 494 </span><span class="s2">  function getCurrentScript() {</span>
+<span class="lineno"> 495 </span><span class="s2">    if (currentlyAddingScript) {</span>
+<span class="lineno"> 496 </span><span class="s2">      return currentlyAddingScript</span>
+<span class="lineno"> 497 </span><span class="s2">    }</span>
+<span class="lineno"> 498 </span>
+<span class="lineno"> 499 </span><span class="s2">    // For IE6-9 browsers, the script onload event may not fire right</span>
+<span class="lineno"> 500 </span><span class="s2">    // after the script is evaluated. Kris Zyp found that it</span>
+<span class="lineno"> 501 </span><span class="s2">    // could query the script nodes and the one that is in "</span><span class="nx">interactive</span><span class="s2">"</span>
+<span class="lineno"> 502 </span><span class="s2">    // mode indicates the current script</span>
+<span class="lineno"> 503 </span><span class="s2">    // ref: http://goo.gl/JHfFW</span>
+<span class="lineno"> 504 </span><span class="s2">    if (interactiveScript &amp;&amp; interactiveScript.readyState === "</span><span class="nx">interactive</span><span class="s2">") {</span>
+<span class="lineno"> 505 </span><span class="s2">      return interactiveScript</span>
+<span class="lineno"> 506 </span><span class="s2">    }</span>
+<span class="lineno"> 507 </span>
+<span class="lineno"> 508 </span><span class="s2">    var scripts = head.getElementsByTagName("</span><span class="nx">script</span><span class="s2">")</span>
+<span class="lineno"> 509 </span>
+<span class="lineno"> 510 </span><span class="s2">    for (var i = scripts.length - 1; i &gt;= 0; i--) {</span>
+<span class="lineno"> 511 </span><span class="s2">      var script = scripts[i]</span>
+<span class="lineno"> 512 </span><span class="s2">      if (script.readyState === "</span><span class="nx">interactive</span><span class="s2">") {</span>
+<span class="lineno"> 513 </span><span class="s2">        interactiveScript = script</span>
+<span class="lineno"> 514 </span><span class="s2">        return interactiveScript</span>
+<span class="lineno"> 515 </span><span class="s2">      }</span>
+<span class="lineno"> 516 </span><span class="s2">    }</span>
+<span class="lineno"> 517 </span><span class="s2">  }</span>
+<span class="lineno"> 518 </span>
+<span class="lineno"> 519 </span><span class="s2">  /**</span>
+<span class="lineno"> 520 </span><span class="s2">   * util-deps.js - The parser for dependencies</span>
+<span class="lineno"> 521 </span><span class="s2">   * ref: tests/research/parse-dependencies/test.html</span>
+<span class="lineno"> 522 </span><span class="s2">   * ref: https://github.com/seajs/crequire</span>
+<span class="lineno"> 523 </span><span class="s2">   */</span>
+<span class="lineno"> 524 </span><span class="s2">  //通过正则匹配require的方式得到依赖信息，</span>
+<span class="lineno"> 525 </span><span class="s2">  //依赖信息为字符串数组，每一个字符串表示一个模块的标识</span>
+<span class="lineno"> 526 </span><span class="s2">  //此函数应当放到fis3中在系统发布的时候运行</span>
+<span class="lineno"> 527 </span><span class="s2">  function parseDependencies(s) {</span>
+<span class="lineno"> 528 </span><span class="s2">    if(s.indexOf('require') == -1) {</span>
+<span class="lineno"> 529 </span><span class="s2">      return []</span>
+<span class="lineno"> 530 </span><span class="s2">    }</span>
+<span class="lineno"> 531 </span><span class="s2">    var index = 0, peek, length = s.length, isReg = 1, modName = 0, res = []</span>
+<span class="lineno"> 532 </span><span class="s2">    var parentheseState = 0, parentheseStack = []</span>
+<span class="lineno"> 533 </span><span class="s2">    var braceState, braceStack = [], isReturn</span>
+<span class="lineno"> 534 </span><span class="s2">    while(index &lt; length) {</span>
+<span class="lineno"> 535 </span><span class="s2">      readch()</span>
+<span class="lineno"> 536 </span><span class="s2">      if(isBlank()) {</span>
+<span class="lineno"> 537 </span><span class="s2">        if(isReturn &amp;&amp; (peek == '</span><span class="se">\n</span><span class="s2">' || peek == '</span><span class="se">\r</span><span class="s2">')) {</span>
+<span class="lineno"> 538 </span><span class="s2">          braceState = 0</span>
+<span class="lineno"> 539 </span><span class="s2">          isReturn = 0</span>
+<span class="lineno"> 540 </span><span class="s2">        }</span>
+<span class="lineno"> 541 </span><span class="s2">      }</span>
+<span class="lineno"> 542 </span><span class="s2">      else if(isQuote()) {</span>
+<span class="lineno"> 543 </span><span class="s2">        dealQuote()</span>
+<span class="lineno"> 544 </span><span class="s2">        isReg = 1</span>
+<span class="lineno"> 545 </span><span class="s2">        isReturn = 0</span>
+<span class="lineno"> 546 </span><span class="s2">        braceState = 0</span>
+<span class="lineno"> 547 </span><span class="s2">      }</span>
+<span class="lineno"> 548 </span><span class="s2">      else if(peek == '/') {</span>
+<span class="lineno"> 549 </span><span class="s2">        readch()</span>
+<span class="lineno"> 550 </span><span class="s2">        if(peek == '/') {</span>
+<span class="lineno"> 551 </span><span class="s2">          index = s.indexOf('</span><span class="se">\n</span><span class="s2">', index)</span>
+<span class="lineno"> 552 </span><span class="s2">          if(index == -1) {</span>
+<span class="lineno"> 553 </span><span class="s2">            index = s.length</span>
+<span class="lineno"> 554 </span><span class="s2">          }</span>
+<span class="lineno"> 555 </span><span class="s2">        }</span>
+<span class="lineno"> 556 </span><span class="s2">        else if(peek == '*') {</span>
+<span class="lineno"> 557 </span><span class="s2">          var i = s.indexOf('</span><span class="se">\n</span><span class="s2">', index)</span>
+<span class="lineno"> 558 </span><span class="s2">          index = s.indexOf('*/', index)</span>
+<span class="lineno"> 559 </span><span class="s2">          if(index == -1) {</span>
+<span class="lineno"> 560 </span><span class="s2">            index = length</span>
+<span class="lineno"> 561 </span><span class="s2">          }</span>
+<span class="lineno"> 562 </span><span class="s2">          else {</span>
+<span class="lineno"> 563 </span><span class="s2">            index += 2</span>
+<span class="lineno"> 564 </span><span class="s2">          }</span>
+<span class="lineno"> 565 </span><span class="s2">          if(isReturn &amp;&amp; i != -1 &amp;&amp; i &lt; index) {</span>
+<span class="lineno"> 566 </span><span class="s2">            braceState = 0</span>
+<span class="lineno"> 567 </span><span class="s2">            isReturn = 0</span>
+<span class="lineno"> 568 </span><span class="s2">          }</span>
+<span class="lineno"> 569 </span><span class="s2">        }</span>
+<span class="lineno"> 570 </span><span class="s2">        else if(isReg) {</span>
+<span class="lineno"> 571 </span><span class="s2">          dealReg()</span>
+<span class="lineno"> 572 </span><span class="s2">          isReg = 0</span>
+<span class="lineno"> 573 </span><span class="s2">          isReturn = 0</span>
+<span class="lineno"> 574 </span><span class="s2">          braceState = 0</span>
+<span class="lineno"> 575 </span><span class="s2">        }</span>
+<span class="lineno"> 576 </span><span class="s2">        else {</span>
+<span class="lineno"> 577 </span><span class="s2">          index--</span>
+<span class="lineno"> 578 </span><span class="s2">          isReg = 1</span>
+<span class="lineno"> 579 </span><span class="s2">          isReturn = 0</span>
+<span class="lineno"> 580 </span><span class="s2">          braceState = 1</span>
+<span class="lineno"> 581 </span><span class="s2">        }</span>
+<span class="lineno"> 582 </span><span class="s2">      }</span>
+<span class="lineno"> 583 </span><span class="s2">      else if(isWord()) {</span>
+<span class="lineno"> 584 </span><span class="s2">        dealWord()</span>
+<span class="lineno"> 585 </span><span class="s2">      }</span>
+<span class="lineno"> 586 </span><span class="s2">      else if(isNumber()) {</span>
+<span class="lineno"> 587 </span><span class="s2">        dealNumber()</span>
+<span class="lineno"> 588 </span><span class="s2">        isReturn = 0</span>
+<span class="lineno"> 589 </span><span class="s2">        braceState = 0</span>
+<span class="lineno"> 590 </span><span class="s2">      }</span>
+<span class="lineno"> 591 </span><span class="s2">      else if(peek == '(') {</span>
+<span class="lineno"> 592 </span><span class="s2">        parentheseStack.push(parentheseState)</span>
+<span class="lineno"> 593 </span><span class="s2">        isReg = 1</span>
+<span class="lineno"> 594 </span><span class="s2">        isReturn = 0</span>
+<span class="lineno"> 595 </span><span class="s2">        braceState = 1</span>
+<span class="lineno"> 596 </span><span class="s2">      }</span>
+<span class="lineno"> 597 </span><span class="s2">      else if(peek == ')') {</span>
+<span class="lineno"> 598 </span><span class="s2">        isReg = parentheseStack.pop()</span>
+<span class="lineno"> 599 </span><span class="s2">        isReturn = 0</span>
+<span class="lineno"> 600 </span><span class="s2">        braceState = 0</span>
+<span class="lineno"> 601 </span><span class="s2">      }</span>
+<span class="lineno"> 602 </span><span class="s2">      else if(peek == '{') {</span>
+<span class="lineno"> 603 </span><span class="s2">        if(isReturn) {</span>
+<span class="lineno"> 604 </span><span class="s2">          braceState = 1</span>
+<span class="lineno"> 605 </span><span class="s2">        }</span>
+<span class="lineno"> 606 </span><span class="s2">        braceStack.push(braceState)</span>
+<span class="lineno"> 607 </span><span class="s2">        isReturn = 0</span>
+<span class="lineno"> 608 </span><span class="s2">        isReg = 1</span>
+<span class="lineno"> 609 </span><span class="s2">      }</span>
+<span class="lineno"> 610 </span><span class="s2">      else if(peek == '}') {</span>
+<span class="lineno"> 611 </span><span class="s2">        braceState = braceStack.pop()</span>
+<span class="lineno"> 612 </span><span class="s2">        isReg = !braceState</span>
+<span class="lineno"> 613 </span><span class="s2">        isReturn = 0</span>
+<span class="lineno"> 614 </span><span class="s2">      }</span>
+<span class="lineno"> 615 </span><span class="s2">      else {</span>
+<span class="lineno"> 616 </span><span class="s2">        var next = s.charAt(index)</span>
+<span class="lineno"> 617 </span><span class="s2">        if(peek == ';') {</span>
+<span class="lineno"> 618 </span><span class="s2">          braceState = 0</span>
+<span class="lineno"> 619 </span><span class="s2">        }</span>
+<span class="lineno"> 620 </span><span class="s2">        else if(peek == '-' &amp;&amp; next == '-'</span>
+<span class="lineno"> 621 </span><span class="s2">          || peek == '+' &amp;&amp; next == '+'</span>
+<span class="lineno"> 622 </span><span class="s2">          || peek == '=' &amp;&amp; next == '&gt;') {</span>
+<span class="lineno"> 623 </span><span class="s2">          braceState = 0</span>
+<span class="lineno"> 624 </span><span class="s2">          index++</span>
+<span class="lineno"> 625 </span><span class="s2">        }</span>
+<span class="lineno"> 626 </span><span class="s2">        else {</span>
+<span class="lineno"> 627 </span><span class="s2">          braceState = 1</span>
+<span class="lineno"> 628 </span><span class="s2">        }</span>
+<span class="lineno"> 629 </span><span class="s2">        isReg = peek != ']'</span>
+<span class="lineno"> 630 </span><span class="s2">        isReturn = 0</span>
+<span class="lineno"> 631 </span><span class="s2">      }</span>
+<span class="lineno"> 632 </span><span class="s2">    }</span>
+<span class="lineno"> 633 </span><span class="s2">    return res</span>
+<span class="lineno"> 634 </span><span class="s2">    function readch() {</span>
+<span class="lineno"> 635 </span><span class="s2">      //返回指定位置的字符</span>
+<span class="lineno"> 636 </span><span class="s2">      peek = s.charAt(index++)</span>
+<span class="lineno"> 637 </span><span class="s2">    }</span>
+<span class="lineno"> 638 </span><span class="s2">    function isBlank() {</span>
+<span class="lineno"> 639 </span><span class="s2">      return /\s/.test(peek)</span>
+<span class="lineno"> 640 </span><span class="s2">    }</span>
+<span class="lineno"> 641 </span><span class="s2">    function isQuote() {</span>
+<span class="lineno"> 642 </span><span class="s2">      return peek == '"</span><span class="s1">' || peek == "'</span><span class="s2">"</span>
+<span class="lineno"> 643 </span><span class="s2">    }</span>
+<span class="lineno"> 644 </span><span class="s2">    //取出""或者''之间的字符，即依赖模块的名称</span>
+<span class="lineno"> 645 </span><span class="s2">    function dealQuote() {</span>
+<span class="lineno"> 646 </span><span class="s2">      var start = index</span>
+<span class="lineno"> 647 </span><span class="s2">      var c = peek</span>
+<span class="lineno"> 648 </span><span class="s2">      var end = s.indexOf(c, start)</span>
+<span class="lineno"> 649 </span><span class="s2">      if(end == -1) {</span>
+<span class="lineno"> 650 </span><span class="s2">        index = length</span>
+<span class="lineno"> 651 </span><span class="s2">      }</span>
+<span class="lineno"> 652 </span><span class="s2">      else if(s.charAt(end - 1) != '</span><span class="se">\\</span><span class="s2">') {</span>
+<span class="lineno"> 653 </span><span class="s2">        index = end + 1</span>
+<span class="lineno"> 654 </span><span class="s2">      }</span>
+<span class="lineno"> 655 </span><span class="s2">      else {</span>
+<span class="lineno"> 656 </span><span class="s2">        while(index &lt; length) {</span>
+<span class="lineno"> 657 </span><span class="s2">          readch()</span>
+<span class="lineno"> 658 </span><span class="s2">          if(peek == '</span><span class="se">\\</span><span class="s2">') {</span>
+<span class="lineno"> 659 </span><span class="s2">            index++</span>
+<span class="lineno"> 660 </span><span class="s2">          }</span>
+<span class="lineno"> 661 </span><span class="s2">          else if(peek == c) {</span>
+<span class="lineno"> 662 </span><span class="s2">            break</span>
+<span class="lineno"> 663 </span><span class="s2">          }</span>
+<span class="lineno"> 664 </span><span class="s2">        }</span>
+<span class="lineno"> 665 </span><span class="s2">      }</span>
+<span class="lineno"> 666 </span><span class="s2">      if(modName) {</span>
+<span class="lineno"> 667 </span><span class="s2">        //maybe substring is faster  than slice .</span>
+<span class="lineno"> 668 </span><span class="s2">        res.push(s.substring(start, index - 1))</span>
+<span class="lineno"> 669 </span><span class="s2">        modName = 0</span>
+<span class="lineno"> 670 </span><span class="s2">      }</span>
+<span class="lineno"> 671 </span><span class="s2">    }</span>
+<span class="lineno"> 672 </span><span class="s2">    function dealReg() {</span>
+<span class="lineno"> 673 </span><span class="s2">      index--</span>
+<span class="lineno"> 674 </span><span class="s2">      while(index &lt; length) {</span>
+<span class="lineno"> 675 </span><span class="s2">        readch()</span>
+<span class="lineno"> 676 </span><span class="s2">        if(peek == '</span><span class="se">\\</span><span class="s2">') {</span>
+<span class="lineno"> 677 </span><span class="s2">          index++</span>
+<span class="lineno"> 678 </span><span class="s2">        }</span>
+<span class="lineno"> 679 </span><span class="s2">        else if(peek == '/') {</span>
+<span class="lineno"> 680 </span><span class="s2">          break</span>
+<span class="lineno"> 681 </span><span class="s2">        }</span>
+<span class="lineno"> 682 </span><span class="s2">        else if(peek == '[') {</span>
+<span class="lineno"> 683 </span><span class="s2">          while(index &lt; length) {</span>
+<span class="lineno"> 684 </span><span class="s2">            readch()</span>
+<span class="lineno"> 685 </span><span class="s2">            if(peek == '</span><span class="se">\\</span><span class="s2">') {</span>
+<span class="lineno"> 686 </span><span class="s2">              index++</span>
+<span class="lineno"> 687 </span><span class="s2">            }</span>
+<span class="lineno"> 688 </span><span class="s2">            else if(peek == ']') {</span>
+<span class="lineno"> 689 </span><span class="s2">              break</span>
+<span class="lineno"> 690 </span><span class="s2">            }</span>
+<span class="lineno"> 691 </span><span class="s2">          }</span>
+<span class="lineno"> 692 </span><span class="s2">        }</span>
+<span class="lineno"> 693 </span><span class="s2">      }</span>
+<span class="lineno"> 694 </span><span class="s2">    }</span>
+<span class="lineno"> 695 </span><span class="s2">    function isWord() {</span>
+<span class="lineno"> 696 </span><span class="s2">      // 匹配所有字母，不区分大小写</span>
+<span class="lineno"> 697 </span><span class="s2">      return /[a-z_$]/i.test(peek)</span>
+<span class="lineno"> 698 </span><span class="s2">    }</span>
+<span class="lineno"> 699 </span><span class="s2">    function dealWord() {</span>
+<span class="lineno"> 700 </span><span class="s2">      var s2 = s.slice(index - 1)</span>
+<span class="lineno"> 701 </span><span class="s2">      //匹配所有的a-z,A-Z,0-9  @by sxy</span>
+<span class="lineno"> 702 </span><span class="s2">      var r = /^[\w$]+/.exec(s2)[0] //匹配所有字母，数字</span>
+<span class="lineno"> 703 </span><span class="s2">      parentheseState = {</span>
+<span class="lineno"> 704 </span><span class="s2">        'if': 1,</span>
+<span class="lineno"> 705 </span><span class="s2">        'for': 1,</span>
+<span class="lineno"> 706 </span><span class="s2">        'while': 1,</span>
+<span class="lineno"> 707 </span><span class="s2">        'with': 1</span>
+<span class="lineno"> 708 </span><span class="s2">      }[r]</span>
+<span class="lineno"> 709 </span><span class="s2">      isReg = {</span>
+<span class="lineno"> 710 </span><span class="s2">        'break': 1,</span>
+<span class="lineno"> 711 </span><span class="s2">        'case': 1,</span>
+<span class="lineno"> 712 </span><span class="s2">        'continue': 1,</span>
+<span class="lineno"> 713 </span><span class="s2">        'debugger': 1,</span>
+<span class="lineno"> 714 </span><span class="s2">        'delete': 1,</span>
+<span class="lineno"> 715 </span><span class="s2">        'do': 1,</span>
+<span class="lineno"> 716 </span><span class="s2">        'else': 1,</span>
+<span class="lineno"> 717 </span><span class="s2">        'false': 1,</span>
+<span class="lineno"> 718 </span><span class="s2">        'if': 1,</span>
+<span class="lineno"> 719 </span><span class="s2">        'in': 1,</span>
+<span class="lineno"> 720 </span><span class="s2">        'instanceof': 1,</span>
+<span class="lineno"> 721 </span><span class="s2">        'return': 1,</span>
+<span class="lineno"> 722 </span><span class="s2">        'typeof': 1,</span>
+<span class="lineno"> 723 </span><span class="s2">        'void': 1</span>
+<span class="lineno"> 724 </span><span class="s2">      }[r]</span>
+<span class="lineno"> 725 </span><span class="s2">      isReturn = r == 'return'</span>
+<span class="lineno"> 726 </span><span class="s2">      braceState = {</span>
+<span class="lineno"> 727 </span><span class="s2">        'instanceof': 1,</span>
+<span class="lineno"> 728 </span><span class="s2">        'delete': 1,</span>
+<span class="lineno"> 729 </span><span class="s2">        'void': 1,</span>
+<span class="lineno"> 730 </span><span class="s2">        'typeof': 1,</span>
+<span class="lineno"> 731 </span><span class="s2">        'return': 1</span>
+<span class="lineno"> 732 </span><span class="s2">      }.hasOwnProperty(r)</span>
+<span class="lineno"> 733 </span><span class="s2">      // 测试是否含有require(“xx”);</span>
+<span class="lineno"> 734 </span><span class="s2">      modName = /^require\s*(?:\/\*[\s\S]*?\*\/\s*)?\(\s*(['"</span><span class="cp">]</span><span class="sr">).+?\1\s*</span><span class="cp">[</span><span class="p">),</span><span class="cp">]</span><span class="sr">/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">s2</span><span class="p">)</span>
+<span class="lineno"> 735 </span>      <span class="k">if</span><span class="p">(</span><span class="nx">modName</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 736 </span>        <span class="c1">//匹配require关键字</span>
+<span class="lineno"> 737 </span>        <span class="nx">r</span> <span class="o">=</span> <span class="err">/^require\s*(?:\/\*</span><span class="cp">[</span><span class="o">\</span><span class="nx">s</span><span class="o">\</span><span class="nx">S</span><span class="cp">]</span><span class="err">*?\*\/\s*)?\(\s*</span><span class="cp">[</span><span class="s1">'"]/.exec(s2)[0]</span>
+<span class="lineno"> 738 </span><span class="s1">        index += r.length - 2</span>
+<span class="lineno"> 739 </span><span class="s1">      }</span>
+<span class="lineno"> 740 </span><span class="s1">      else {</span>
+<span class="lineno"> 741 </span><span class="s1">        // 匹配第一个单词</span>
+<span class="lineno"> 742 </span><span class="s1">        index += /^[\w$]+(?:\s*\.\s*[\w$]+)*/.exec(s2)[0].length - 1</span>
+<span class="lineno"> 743 </span><span class="s1">      }</span>
+<span class="lineno"> 744 </span><span class="s1">    }</span>
+<span class="lineno"> 745 </span><span class="s1">    function isNumber() {</span>
+<span class="lineno"> 746 </span><span class="s1">      return /\d/.test(peek)</span>
+<span class="lineno"> 747 </span><span class="s1">        || peek == '</span><span class="nx">.</span><span class="s1">' &amp;&amp; /\d/.test(s.charAt(index))</span>
+<span class="lineno"> 748 </span><span class="s1">    }</span>
+<span class="lineno"> 749 </span><span class="s1">    function dealNumber() {</span>
+<span class="lineno"> 750 </span><span class="s1">      var s2 = s.slice(index - 1)</span>
+<span class="lineno"> 751 </span><span class="s1">      var r</span>
+<span class="lineno"> 752 </span><span class="s1">      if(peek == '</span><span class="nx">.</span><span class="s1">') {</span>
+<span class="lineno"> 753 </span><span class="s1">        // :获取.之后的整数或者是.之后的以科学计数法表达的数字</span>
+<span class="lineno"> 754 </span><span class="s1">        // /^\.\d+(?:E[+-]?\d*)?\s*/i.exec(".671+22+s2ss21")[0]   ==&gt;.671        </span>
+<span class="lineno"> 755 </span><span class="s1">        r = /^\.\d+(?:E[+-]?\d*)?\s*/i.exec(s2)[0]</span>
+<span class="lineno"> 756 </span><span class="s1">      }</span>
+<span class="lineno"> 757 </span><span class="s1">      //匹配以0x开头[数字 a-f]的字符串</span>
+<span class="lineno"> 758 </span><span class="s1">      else if(/^0x[\da-f]*/i.test(s2)) { //匹配以0x开头[数字 a-f]的字符串；</span>
+<span class="lineno"> 759 </span><span class="s1">        r = /^0x[\da-f]*\s*/i.exec(s2)[0]</span>
+<span class="lineno"> 760 </span><span class="s1">      }</span>
+<span class="lineno"> 761 </span><span class="s1">      else {</span>
+<span class="lineno"> 762 </span><span class="s1">        // 匹配小数或者以科学计数法表示的小数</span>
+<span class="lineno"> 763 </span><span class="s1">        r = /^\d+\.?\d*(?:E[+-]?\d*)?\s*/i.exec(s2)[0]</span>
+<span class="lineno"> 764 </span><span class="s1">      }</span>
+<span class="lineno"> 765 </span><span class="s1">      index += r.length - 1</span>
+<span class="lineno"> 766 </span><span class="s1">      isReg = 0</span>
+<span class="lineno"> 767 </span><span class="s1">    }</span>
+<span class="lineno"> 768 </span><span class="s1">  }</span>
+<span class="lineno"> 769 </span>
+<span class="lineno"> 770 </span><span class="s1">  /*-------------parseDependencies 函数定义结束---------------*/</span>
+<span class="lineno"> 771 </span><span class="s1">  /**</span>
+<span class="lineno"> 772 </span><span class="s1">   * module.js - The core of module loader</span>
+<span class="lineno"> 773 </span><span class="s1">   */</span>
+<span class="lineno"> 774 </span>
+<span class="lineno"> 775 </span><span class="s1">  var cachedMods = seajs.cache = {}</span>
+<span class="lineno"> 776 </span><span class="s1">  var anonymousMeta</span>
+<span class="lineno"> 777 </span>
+<span class="lineno"> 778 </span><span class="s1">  var fetchingList = {}</span>
+<span class="lineno"> 779 </span><span class="s1">  var fetchedList = {}</span>
+<span class="lineno"> 780 </span><span class="s1">  var callbackList = {}</span>
+<span class="lineno"> 781 </span>
+<span class="lineno"> 782 </span><span class="s1">  var STATUS = Module.STATUS = {</span>
+<span class="lineno"> 783 </span><span class="s1">    // 1 - The `module.uri` is being fetched</span>
+<span class="lineno"> 784 </span><span class="s1">    FETCHING: 1, //开始加载当前模块</span>
+<span class="lineno"> 785 </span><span class="s1">    // 2 - The meta data has been saved to cachedMods</span>
+<span class="lineno"> 786 </span><span class="s1">    SAVED: 2, //当前模块加载完成并保存模块数据</span>
+<span class="lineno"> 787 </span><span class="s1">    // 3 - The `module.dependencies` are being loaded</span>
+<span class="lineno"> 788 </span><span class="s1">    LOADING: 3, //开始加载依赖的模块</span>
+<span class="lineno"> 789 </span><span class="s1">    // 4 - The module are ready to execute</span>
+<span class="lineno"> 790 </span><span class="s1">    LOADED: 4, //依赖模块已经加载完成</span>
+<span class="lineno"> 791 </span><span class="s1">    // 5 - The module is being executed</span>
+<span class="lineno"> 792 </span><span class="s1">    EXECUTING: 5, //当前模块执行中</span>
+<span class="lineno"> 793 </span><span class="s1">    // 6 - The `module.exports` is available</span>
+<span class="lineno"> 794 </span><span class="s1">    EXECUTED: 6, //当前模块执行完毕</span>
+<span class="lineno"> 795 </span><span class="s1">    // 7 - 404</span>
+<span class="lineno"> 796 </span><span class="s1">    ERROR: 7 //出错</span>
+<span class="lineno"> 797 </span><span class="s1">  }</span>
+<span class="lineno"> 798 </span>
+<span class="lineno"> 799 </span>
+<span class="lineno"> 800 </span><span class="s1">  function Module(uri, deps) {</span>
+<span class="lineno"> 801 </span><span class="s1">    this.uri = uri</span>
+<span class="lineno"> 802 </span><span class="s1">    this.dependencies = deps || [] //依赖模块ID列表</span>
+<span class="lineno"> 803 </span><span class="s1">    this.deps = {} // Ref the dependence modules, 依赖模块的引用映射</span>
+<span class="lineno"> 804 </span><span class="s1">    this.status = 0 //[0, 1, 2, 3, 4, 5, 6, 7]</span>
+<span class="lineno"> 805 </span>
+<span class="lineno"> 806 </span><span class="s1">    this._entry = [] //在模块加载完成之后需要调用callback的模块</span>
+<span class="lineno"> 807 </span><span class="s1">  }</span>
+<span class="lineno"> 808 </span>
+<span class="lineno"> 809 </span><span class="s1">  // Resolve module.dependencies</span>
+<span class="lineno"> 810 </span><span class="s1">  //获取mod的所有dep的uri。</span>
+<span class="lineno"> 811 </span><span class="s1">  Module.prototype.resolve = function() {</span>
+<span class="lineno"> 812 </span><span class="s1">    var mod = this</span>
+<span class="lineno"> 813 </span><span class="s1">    var ids = mod.dependencies</span>
+<span class="lineno"> 814 </span><span class="s1">    var uris = []</span>
+<span class="lineno"> 815 </span>
+<span class="lineno"> 816 </span><span class="s1">    for (var i = 0, len = ids.length; i &lt; len; i++) {</span>
+<span class="lineno"> 817 </span><span class="s1">      uris[i] = Module.resolve(ids[i], mod.uri)</span>
+<span class="lineno"> 818 </span><span class="s1">    }</span>
+<span class="lineno"> 819 </span><span class="s1">    return uris</span>
+<span class="lineno"> 820 </span><span class="s1">  }</span>
+<span class="lineno"> 821 </span>
+<span class="lineno"> 822 </span><span class="s1">  /*遍历依赖uri，判断是否全部加载,如果全部加载的话，最后mod._entry.length的值为0*/</span>
+<span class="lineno"> 823 </span><span class="s1">  Module.prototype.pass = function() {</span>
+<span class="lineno"> 824 </span><span class="s1">    var mod = this</span>
+<span class="lineno"> 825 </span><span class="s1">    //依赖模块个数</span>
+<span class="lineno"> 826 </span><span class="s1">    var len = mod.dependencies.length</span>
+<span class="lineno"> 827 </span>
+<span class="lineno"> 828 </span><span class="s1">    //遍历依赖模块</span>
+<span class="lineno"> 829 </span><span class="s1">    for (var i = 0; i &lt; mod._entry.length; i++) {</span>
+<span class="lineno"> 830 </span><span class="s1">      var entry = mod._entry[i]</span>
+<span class="lineno"> 831 </span><span class="s1">      var count = 0</span>
+<span class="lineno"> 832 </span><span class="s1">      for (var j = 0; j &lt; len; j++) {</span>
+<span class="lineno"> 833 </span><span class="s1">        var m = mod.deps[mod.dependencies[j]]//依赖的模块</span>
+<span class="lineno"> 834 </span><span class="s1">        // If the module is unload and unused in the entry, pass entry to it</span>
+<span class="lineno"> 835 </span><span class="s1">        if (m.status &lt; STATUS.LOADED &amp;&amp; !entry.history.hasOwnProperty(m.uri)) {</span>
+<span class="lineno"> 836 </span><span class="s1">          entry.history[m.uri] = true</span>
+<span class="lineno"> 837 </span><span class="s1">          count++</span>
+<span class="lineno"> 838 </span><span class="s1">          m._entry.push(entry)</span>
+<span class="lineno"> 839 </span><span class="s1">          if(m.status === STATUS.LOADING) {</span>
+<span class="lineno"> 840 </span><span class="s1">            m.pass()</span>
+<span class="lineno"> 841 </span><span class="s1">          }</span>
+<span class="lineno"> 842 </span><span class="s1">        }</span>
+<span class="lineno"> 843 </span><span class="s1">      }</span>
+<span class="lineno"> 844 </span><span class="s1">      // If has passed the entry to it'</span><span class="nx">s</span> <span class="nx">dependencies</span><span class="p">,</span> <span class="nx">modify</span> <span class="nx">the</span> <span class="nx">entry</span><span class="s1">'s count and del it in the module</span>
+<span class="lineno"> 845 </span><span class="s1">      if (count &gt; 0) {</span>
+<span class="lineno"> 846 </span><span class="s1">        entry.remain += count - 1</span>
+<span class="lineno"> 847 </span><span class="s1">        mod._entry.shift()</span>
+<span class="lineno"> 848 </span><span class="s1">        i--</span>
+<span class="lineno"> 849 </span><span class="s1">      }</span>
+<span class="lineno"> 850 </span><span class="s1">    }</span>
+<span class="lineno"> 851 </span><span class="s1">  }</span>
+<span class="lineno"> 852 </span>
+<span class="lineno"> 853 </span><span class="s1">  // Load module.dependencies and fire onload when all done</span>
+<span class="lineno"> 854 </span><span class="s1">  /*模块加载: 第3步*/</span>
+<span class="lineno"> 855 </span><span class="s1">  /**</span>
+<span class="lineno"> 856 </span><span class="s1">   * 该方法中包含了seajs模块加载的整体逻辑。</span>
+<span class="lineno"> 857 </span><span class="s1">   * 用来加载当前模块的依赖模块，</span>
+<span class="lineno"> 858 </span><span class="s1">   * 并在全部模块加载完毕之后触发onload方法。</span>
+<span class="lineno"> 859 </span><span class="s1">   */</span>
+<span class="lineno"> 860 </span><span class="s1">  Module.prototype.load = function() {</span>
+<span class="lineno"> 861 </span><span class="s1">    var mod = this</span>
+<span class="lineno"> 862 </span>
+<span class="lineno"> 863 </span><span class="s1">    // If the module is being loaded, just wait it onload call</span>
+<span class="lineno"> 864 </span><span class="s1">    if (mod.status &gt;= STATUS.LOADING) {</span>
+<span class="lineno"> 865 </span><span class="s1">      return //接return 等待触发onload即可</span>
+<span class="lineno"> 866 </span><span class="s1">    }</span>
+<span class="lineno"> 867 </span>
+<span class="lineno"> 868 </span><span class="s1">    mod.status = STATUS.LOADING</span>
+<span class="lineno"> 869 </span>
+<span class="lineno"> 870 </span><span class="s1">    // Emit `load` event for plugins such as combo plugin</span>
+<span class="lineno"> 871 </span><span class="s1">    var uris = mod.resolve()</span>
+<span class="lineno"> 872 </span><span class="s1">    emit("load", uris)</span>
+<span class="lineno"> 873 </span>
+<span class="lineno"> 874 </span><span class="s1">    //获取所有的依赖模块</span>
+<span class="lineno"> 875 </span><span class="s1">    for (var i = 0, len = uris.length; i &lt; len; i++) {</span>
+<span class="lineno"> 876 </span><span class="s1">      mod.deps[mod.dependencies[i]] = Module.get(uris[i])</span>
+<span class="lineno"> 877 </span><span class="s1">    }</span>
+<span class="lineno"> 878 </span>
+<span class="lineno"> 879 </span><span class="s1">    // Pass entry to it'</span><span class="nx">s</span> <span class="nx">dependencies</span>
+<span class="lineno"> 880 </span>    <span class="c1">//将依赖uri遍历，判断是否全部加载</span>
+<span class="lineno"> 881 </span>    <span class="nx">mod.pass</span><span class="p">()</span>
+<span class="lineno"> 882 </span>
+<span class="lineno"> 883 </span>    <span class="c1">// If module has entries not be passed, call onload</span>
+<span class="lineno"> 884 </span>    <span class="k">if</span> <span class="p">(</span><span class="nx">mod._entry.length</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 885 </span>      <span class="cm">/*模块加载: 第4步*/</span>
+<span class="lineno"> 886 </span>      <span class="nx">mod.onload</span><span class="p">()</span>
+<span class="lineno"> 887 </span>      <span class="k">return</span>
+<span class="lineno"> 888 </span>    <span class="p">}</span>
+<span class="lineno"> 889 </span>
+<span class="lineno"> 890 </span>    <span class="c1">// Begin parallel loading</span>
+<span class="lineno"> 891 </span>    <span class="c1">// 开始并行加载</span>
+<span class="lineno"> 892 </span>    <span class="kd">var</span> <span class="n">requestCache</span><span class="o"> =</span> <span class="p">{}</span>
+<span class="lineno"> 893 </span>    <span class="kd">var</span> <span class="nx">m</span>
+<span class="lineno"> 894 </span>
+<span class="lineno"> 895 </span>    <span class="nx">for</span> <span class="p">(</span><span class="n">i</span><span class="o"> =</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 896 </span>      <span class="n">m</span><span class="o"> =</span> <span class="nx">cachedMods</span><span class="err">[</span><span class="nx">uris</span><span class="err">[</span><span class="nx">i</span><span class="cp">]</span><span class="err">]</span>
+<span class="lineno"> 897 </span>
+<span class="lineno"> 898 </span>      <span class="k">if</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">status</span> <span class="o">&lt;</span> <span class="nx">STATUS</span><span class="p">.</span><span class="nx">FETCHING</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 899 </span>        <span class="nx">m</span><span class="p">.</span><span class="nx">fetch</span><span class="p">(</span><span class="nx">requestCache</span><span class="p">)</span><span class="c1">//从服务端递归拉取依赖模块，并执行load</span>
+<span class="lineno"> 900 </span>      <span class="p">}</span>
+<span class="lineno"> 901 </span>      <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="nx">STATUS</span><span class="p">.</span><span class="nx">SAVED</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 902 </span>        <span class="nx">m</span><span class="p">.</span><span class="nx">load</span><span class="p">()</span><span class="c1">//若依赖模块已经被获取，直接执行load</span>
+<span class="lineno"> 903 </span>      <span class="p">}</span>
+<span class="lineno"> 904 </span>    <span class="p">}</span>
+<span class="lineno"> 905 </span>
+<span class="lineno"> 906 </span>    <span class="c1">// Send all requests at last to avoid cache bug in IE6-9. Issues#808</span>
+<span class="lineno"> 907 </span>    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">requestUri</span> <span class="k">in</span> <span class="nx">requestCache</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 908 </span>      <span class="k">if</span> <span class="p">(</span><span class="nx">requestCache</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">requestUri</span><span class="p">))</span> <span class="p">{</span>
+<span class="lineno"> 909 </span>        <span class="nx">requestCache</span><span class="cp">[</span><span class="nx">requestUri</span><span class="cp">]</span><span class="p">()</span>
+<span class="lineno"> 910 </span>      <span class="p">}</span>
+<span class="lineno"> 911 </span>    <span class="p">}</span>
+<span class="lineno"> 912 </span>  <span class="p">}</span>
+<span class="lineno"> 913 </span>
+<span class="lineno"> 914 </span>  <span class="c1">// Call this method when module is loaded</span>
+<span class="lineno"> 915 </span>  <span class="cm">/*模块加载: 第4步*/</span>
+<span class="lineno"> 916 </span>  <span class="nx">Module</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 917 </span>    <span class="kd">var</span> <span class="nx">mod</span> <span class="o">=</span> <span class="k">this</span>
+<span class="lineno"> 918 </span>    <span class="nx">mod</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="nx">STATUS</span><span class="p">.</span><span class="nx">LOADED</span>
+<span class="lineno"> 919 </span>
+<span class="lineno"> 920 </span>    <span class="c1">// When sometimes cached in IE, exec will occur before onload, make sure len is an number</span>
+<span class="lineno"> 921 </span>    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">len</span> <span class="o">=</span> <span class="p">(</span><span class="nx">mod</span><span class="p">.</span><span class="nx">_entry</span> <span class="o">||</span> <span class="cp">[]</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 922 </span>      <span class="kd">var</span> <span class="nx">entry</span> <span class="o">=</span> <span class="nx">mod</span><span class="p">.</span><span class="nx">_entry</span><span class="cp">[</span><span class="nx">i</span><span class="cp">]</span>
+<span class="lineno"> 923 </span>      <span class="c1">// entry.remain表示未加载的模块的个数，</span>
+<span class="lineno"> 924 </span>      <span class="c1">// 当其===0(依赖模块全部加载完成)时，</span>
+<span class="lineno"> 925 </span>      <span class="c1">// 执行module的回调函数。</span>
+<span class="lineno"> 926 </span>      <span class="k">if</span> <span class="p">(</span><span class="o">--</span><span class="nx">entry</span><span class="p">.</span><span class="nx">remain</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 927 </span>        <span class="nx">entry</span><span class="p">.</span><span class="nx">callback</span><span class="p">()</span>
+<span class="lineno"> 928 </span>      <span class="p">}</span>
+<span class="lineno"> 929 </span>    <span class="p">}</span>
+<span class="lineno"> 930 </span>
+<span class="lineno"> 931 </span>    <span class="cm">/*删除mod._entry,释放内存。*/</span>
+<span class="lineno"> 932 </span>    <span class="k">delete</span> <span class="nx">mod</span><span class="p">.</span><span class="nx">_entry</span>
+<span class="lineno"> 933 </span>  <span class="p">}</span>
+<span class="lineno"> 934 </span>
+<span class="lineno"> 935 </span>  <span class="c1">// Call this method when module is 404</span>
+<span class="lineno"> 936 </span>  <span class="nx">Module</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">error</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 937 </span>    <span class="kd">var</span> <span class="nx">mod</span> <span class="o">=</span> <span class="k">this</span>
+<span class="lineno"> 938 </span>    <span class="nx">mod</span><span class="p">.</span><span class="nx">onload</span><span class="p">()</span>
+<span class="lineno"> 939 </span>    <span class="nx">mod</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="nx">STATUS</span><span class="p">.</span><span class="nx">ERROR</span>
+<span class="lineno"> 940 </span>  <span class="p">}</span>
+<span class="lineno"> 941 </span>
+<span class="lineno"> 942 </span>  <span class="c1">// Execute a module</span>
+<span class="lineno"> 943 </span>  <span class="nx">Module</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">exec</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 944 </span>    <span class="kd">var</span> <span class="nx">mod</span> <span class="o">=</span> <span class="k">this</span>
+<span class="lineno"> 945 </span>
+<span class="lineno"> 946 </span>    <span class="c1">// When module is executed, DO NOT execute it again. When module</span>
+<span class="lineno"> 947 </span>    <span class="c1">// is being executed, just return `module.exports` too, for avoiding</span>
+<span class="lineno"> 948 </span>    <span class="c1">// circularly calling</span>
+<span class="lineno"> 949 </span>    <span class="k">if</span> <span class="p">(</span><span class="nx">mod</span><span class="p">.</span><span class="nx">status</span> <span class="o">&gt;=</span> <span class="nx">STATUS</span><span class="p">.</span><span class="nx">EXECUTING</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 950 </span>      <span class="k">return</span> <span class="nx">mod</span><span class="p">.</span><span class="nx">exports</span>
+<span class="lineno"> 951 </span>    <span class="p">}</span>
+<span class="lineno"> 952 </span>
+<span class="lineno"> 953 </span>    <span class="nx">mod</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="nx">STATUS</span><span class="p">.</span><span class="nx">EXECUTING</span>
+<span class="lineno"> 954 </span>
+<span class="lineno"> 955 </span>    <span class="k">if</span> <span class="p">(</span><span class="nx">mod</span><span class="p">.</span><span class="nx">_entry</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">mod</span><span class="p">.</span><span class="nx">_entry</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 956 </span>      <span class="k">delete</span> <span class="nx">mod</span><span class="p">.</span><span class="nx">_entry</span>
+<span class="lineno"> 957 </span>    <span class="p">}</span>
+<span class="lineno"> 958 </span>
+<span class="lineno"> 959 </span>    <span class="c1">//non-cmd module has no property factory and exports</span>
+<span class="lineno"> 960 </span>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">mod</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s1">'factory'</span><span class="p">))</span> <span class="p">{</span>
+<span class="lineno"> 961 </span>      <span class="nx">mod</span><span class="p">.</span><span class="nx">non</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="lineno"> 962 </span>      <span class="k">return</span>
+<span class="lineno"> 963 </span>    <span class="p">}</span>
+<span class="lineno"> 964 </span>
+<span class="lineno"> 965 </span>    <span class="c1">// Create require</span>
+<span class="lineno"> 966 </span>    <span class="kd">var</span> <span class="nx">uri</span> <span class="o">=</span> <span class="nx">mod</span><span class="p">.</span><span class="nx">uri</span>
+<span class="lineno"> 967 </span>
+<span class="lineno"> 968 </span>    <span class="c1">// 该require方法即为模块定义中使用的require方法</span>
+<span class="lineno"> 969 </span>    <span class="kd">function</span> <span class="nx">require</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 970 </span>      <span class="kd">var</span> <span class="nx">m</span> <span class="o">=</span> <span class="nx">mod</span><span class="p">.</span><span class="nx">deps</span><span class="cp">[</span><span class="nx">id</span><span class="cp">]</span> <span class="o">||</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">require</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">id</span><span class="p">))</span>
+<span class="lineno"> 971 </span>      <span class="k">if</span> <span class="p">(</span><span class="nx">m</span><span class="p">.</span><span class="nx">status</span> <span class="o">==</span> <span class="nx">STATUS</span><span class="p">.</span><span class="nx">ERROR</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 972 </span>        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">'module was broken: '</span> <span class="o">+</span> <span class="nx">m</span><span class="p">.</span><span class="nx">uri</span><span class="p">)</span>
+<span class="lineno"> 973 </span>      <span class="p">}</span>
+<span class="lineno"> 974 </span>      <span class="k">return</span> <span class="nx">m</span><span class="p">.</span><span class="nx">exec</span><span class="p">()</span>
+<span class="lineno"> 975 </span>    <span class="p">}</span>
+<span class="lineno"> 976 </span>
+<span class="lineno"> 977 </span>    <span class="nx">require</span><span class="p">.</span><span class="nx">resolve</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 978 </span>      <span class="k">return</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">uri</span><span class="p">)</span>
+<span class="lineno"> 979 </span>    <span class="p">}</span>
+<span class="lineno"> 980 </span>
+<span class="lineno"> 981 </span>    <span class="cm">/*异步获取模块*/</span>
+<span class="lineno"> 982 </span>    <span class="nx">require</span><span class="p">.</span><span class="nx">async</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ids</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 983 </span>      <span class="nx">Module</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">ids</span><span class="p">,</span> <span class="nx">callback</span><span class="p">,</span> <span class="nx">uri</span> <span class="o">+</span> <span class="s2">"_async_"</span> <span class="o">+</span> <span class="nx">cid</span><span class="p">())</span>
+<span class="lineno"> 984 </span>      <span class="k">return</span> <span class="nx">require</span>
+<span class="lineno"> 985 </span>    <span class="p">}</span>
+<span class="lineno"> 986 </span>
+<span class="lineno"> 987 </span>    <span class="c1">// Exec factory</span>
+<span class="lineno"> 988 </span>    <span class="kd">var</span> <span class="nx">factory</span> <span class="o">=</span> <span class="nx">mod</span><span class="p">.</span><span class="nx">factory</span>
+<span class="lineno"> 989 </span>
+<span class="lineno"> 990 </span>    <span class="c1">// 调用工厂方法并导出模块</span>
+<span class="lineno"> 991 </span>    <span class="kd">var</span> <span class="nx">exports</span> <span class="o">=</span> <span class="nx">isFunction</span><span class="p">(</span><span class="nx">factory</span><span class="p">)</span> <span class="o">?</span>
+<span class="lineno"> 992 </span>      <span class="nx">factory</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">mod</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{},</span> <span class="nx">require</span><span class="p">,</span> <span class="nx">mod</span><span class="p">.</span><span class="nx">exports</span><span class="p">,</span> <span class="nx">mod</span><span class="p">)</span> <span class="o">:</span>
+<span class="lineno"> 993 </span>      <span class="nx">factory</span>
+<span class="lineno"> 994 </span>
+<span class="lineno"> 995 </span>    <span class="k">if</span> <span class="p">(</span><span class="nx">exports</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 996 </span>      <span class="nx">exports</span> <span class="o">=</span> <span class="nx">mod</span><span class="p">.</span><span class="nx">exports</span>
+<span class="lineno"> 997 </span>    <span class="p">}</span>
+<span class="lineno"> 998 </span>
+<span class="lineno"> 999 </span>    <span class="c1">// Reduce memory leak</span>
+<span class="lineno">1000 </span>    <span class="k">delete</span> <span class="nx">mod</span><span class="p">.</span><span class="nx">factory</span>
+<span class="lineno">1001 </span>
+<span class="lineno">1002 </span>    <span class="nx">mod</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">exports</span>
+<span class="lineno">1003 </span>    <span class="nx">mod</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="nx">STATUS</span><span class="p">.</span><span class="nx">EXECUTED</span>
+<span class="lineno">1004 </span>
+<span class="lineno">1005 </span>    <span class="c1">// Emit `exec` event</span>
+<span class="lineno">1006 </span>    <span class="nx">emit</span><span class="p">(</span><span class="s2">"exec"</span><span class="p">,</span> <span class="nx">mod</span><span class="p">)</span>
+<span class="lineno">1007 </span>
+<span class="lineno">1008 </span>    <span class="k">return</span> <span class="nx">mod</span><span class="p">.</span><span class="nx">exports</span>
+<span class="lineno">1009 </span>  <span class="p">}</span>
+<span class="lineno">1010 </span>
+<span class="lineno">1011 </span>  <span class="c1">// Fetch a module 取得模块</span>
+<span class="lineno">1012 </span>  <span class="cm">/* 遍历当前模块所依赖的模块，</span>
+<span class="lineno">1013 </span><span class="cm">   * 把依赖模块从服务端加载出来，</span>
+<span class="lineno">1014 </span><span class="cm">   * 加载完成后，浏览器会立即执行模块的define方法，</span>
+<span class="lineno">1015 </span><span class="cm">   * 此时依赖模块的状态为saved。</span>
+<span class="lineno">1016 </span><span class="cm">   */</span>
+<span class="lineno">1017 </span>  <span class="nx">Module</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">fetch</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">requestCache</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">1018 </span>    <span class="kd">var</span> <span class="nx">mod</span> <span class="o">=</span> <span class="k">this</span>
+<span class="lineno">1019 </span>    <span class="kd">var</span> <span class="nx">uri</span> <span class="o">=</span> <span class="nx">mod</span><span class="p">.</span><span class="nx">uri</span>
+<span class="lineno">1020 </span>
+<span class="lineno">1021 </span>    <span class="nx">mod</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="nx">STATUS</span><span class="p">.</span><span class="nx">FETCHING</span>
+<span class="lineno">1022 </span>
+<span class="lineno">1023 </span>    <span class="c1">// Emit `fetch` event for plugins such as combo plugin</span>
+<span class="lineno">1024 </span>    <span class="kd">var</span> <span class="nx">emitData</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">uri</span><span class="o">:</span> <span class="nx">uri</span> <span class="p">}</span>
+<span class="lineno">1025 </span>    <span class="nx">emit</span><span class="p">(</span><span class="s2">"fetch"</span><span class="p">,</span> <span class="nx">emitData</span><span class="p">)</span>
+<span class="lineno">1026 </span>    <span class="kd">var</span> <span class="nx">requestUri</span> <span class="o">=</span> <span class="nx">emitData</span><span class="p">.</span><span class="nx">requestUri</span> <span class="o">||</span> <span class="nx">uri</span>
+<span class="lineno">1027 </span>
+<span class="lineno">1028 </span>    <span class="c1">// Empty uri or a non-CMD module</span>
+<span class="lineno">1029 </span>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">requestUri</span> <span class="o">||</span> <span class="nx">fetchedList</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">requestUri</span><span class="p">))</span> <span class="p">{</span>
+<span class="lineno">1030 </span>      <span class="nx">mod</span><span class="p">.</span><span class="nx">load</span><span class="p">()</span>
+<span class="lineno">1031 </span>      <span class="k">return</span>
+<span class="lineno">1032 </span>    <span class="p">}</span>
+<span class="lineno">1033 </span>
+<span class="lineno">1034 </span>    <span class="k">if</span> <span class="p">(</span><span class="nx">fetchingList</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">requestUri</span><span class="p">))</span> <span class="p">{</span>
+<span class="lineno">1035 </span>      <span class="nx">callbackList</span><span class="cp">[</span><span class="nx">requestUri</span><span class="cp">]</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">mod</span><span class="p">)</span>
+<span class="lineno">1036 </span>      <span class="k">return</span>
+<span class="lineno">1037 </span>    <span class="p">}</span>
+<span class="lineno">1038 </span>
+<span class="lineno">1039 </span>    <span class="nx">fetchingList</span><span class="cp">[</span><span class="nx">requestUri</span><span class="cp">]</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="lineno">1040 </span>    <span class="nx">callbackList</span><span class="cp">[</span><span class="nx">requestUri</span><span class="cp">]</span> <span class="o">=</span> <span class="cp">[</span><span class="nx">mod</span><span class="cp">]</span>
+<span class="lineno">1041 </span>
+<span class="lineno">1042 </span>    <span class="c1">// Emit `request` event for plugins such as text plugin</span>
+<span class="lineno">1043 </span>    <span class="nx">emit</span><span class="p">(</span><span class="s2">"request"</span><span class="p">,</span> <span class="nx">emitData</span> <span class="o">=</span> <span class="p">{</span>
+<span class="lineno">1044 </span>      <span class="nx">uri</span><span class="o">:</span> <span class="nx">uri</span><span class="p">,</span>
+<span class="lineno">1045 </span>      <span class="nx">requestUri</span><span class="o">:</span> <span class="nx">requestUri</span><span class="p">,</span>
+<span class="lineno">1046 </span>      <span class="nx">onRequest</span><span class="o">:</span> <span class="nx">onRequest</span><span class="p">,</span>
+<span class="lineno">1047 </span>      <span class="nx">charset</span><span class="o">:</span> <span class="nx">isFunction</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">charset</span><span class="p">)</span> <span class="o">?</span> <span class="nx">data</span><span class="p">.</span><span class="nx">charset</span><span class="p">(</span><span class="nx">requestUri</span><span class="p">)</span> <span class="o">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">charset</span><span class="p">,</span>
+<span class="lineno">1048 </span>      <span class="nx">crossorigin</span><span class="o">:</span> <span class="nx">isFunction</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">crossorigin</span><span class="p">)</span> <span class="o">?</span> <span class="nx">data</span><span class="p">.</span><span class="nx">crossorigin</span><span class="p">(</span><span class="nx">requestUri</span><span class="p">)</span> <span class="o">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">crossorigin</span>
+<span class="lineno">1049 </span>    <span class="p">})</span>
+<span class="lineno">1050 </span>
+<span class="lineno">1051 </span>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">emitData</span><span class="p">.</span><span class="nx">requested</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">1052 </span>      <span class="nx">requestCache</span> <span class="o">?</span>
+<span class="lineno">1053 </span>        <span class="nx">requestCache</span><span class="cp">[</span><span class="nx">emitData.requestUri</span><span class="cp">]</span> <span class="o">=</span> <span class="nx">sendRequest</span> <span class="o">:</span>
+<span class="lineno">1054 </span>        <span class="nx">sendRequest</span><span class="p">()</span>
+<span class="lineno">1055 </span>    <span class="p">}</span>
+<span class="lineno">1056 </span>
+<span class="lineno">1057 </span>    <span class="c1">//从服务端请求模块</span>
+<span class="lineno">1058 </span>    <span class="kd">function</span> <span class="nx">sendRequest</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">1059 </span>      <span class="nx">seajs</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="nx">emitData</span><span class="p">.</span><span class="nx">requestUri</span><span class="p">,</span> <span class="nx">emitData</span><span class="p">.</span><span class="nx">onRequest</span><span class="p">,</span> <span class="nx">emitData</span><span class="p">.</span><span class="nx">charset</span><span class="p">,</span> <span class="nx">emitData</span><span class="p">.</span><span class="nx">crossorigin</span><span class="p">)</span>
+<span class="lineno">1060 </span>    <span class="p">}</span>
+<span class="lineno">1061 </span>
+<span class="lineno">1062 </span>    <span class="kd">function</span> <span class="nx">onRequest</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">1063 </span>      <span class="k">delete</span> <span class="nx">fetchingList</span><span class="cp">[</span><span class="nx">requestUri</span><span class="cp">]</span>
+<span class="lineno">1064 </span>      <span class="nx">fetchedList</span><span class="cp">[</span><span class="nx">requestUri</span><span class="cp">]</span> <span class="o">=</span> <span class="kc">true</span><span class="c1">//取得的清单</span>
+<span class="lineno">1065 </span>
+<span class="lineno">1066 </span>      <span class="c1">// Save meta data of anonymous module 保存匿名模块的元数据</span>
+<span class="lineno">1067 </span>      <span class="k">if</span> <span class="p">(</span><span class="nx">anonymousMeta</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">1068 </span>        <span class="nx">Module</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">uri</span><span class="p">,</span> <span class="nx">anonymousMeta</span><span class="p">)</span>
+<span class="lineno">1069 </span>        <span class="nx">anonymousMeta</span> <span class="o">=</span> <span class="kc">null</span>
+<span class="lineno">1070 </span>      <span class="p">}</span>
+<span class="lineno">1071 </span>
+<span class="lineno">1072 </span>      <span class="c1">// Call callbacks</span>
+<span class="lineno">1073 </span>      <span class="kd">var</span> <span class="nx">m</span><span class="p">,</span> <span class="nx">mods</span> <span class="o">=</span> <span class="nx">callbackList</span><span class="cp">[</span><span class="nx">requestUri</span><span class="cp">]</span>
+<span class="lineno">1074 </span>      <span class="k">delete</span> <span class="nx">callbackList</span><span class="cp">[</span><span class="nx">requestUri</span><span class="cp">]</span>
+<span class="lineno">1075 </span>      <span class="k">while</span> <span class="p">((</span><span class="nx">m</span> <span class="o">=</span> <span class="nx">mods</span><span class="p">.</span><span class="nx">shift</span><span class="p">()))</span> <span class="p">{</span>
+<span class="lineno">1076 </span>        <span class="c1">// When 404 occurs, the params error will be true</span>
+<span class="lineno">1077 </span>        <span class="k">if</span><span class="p">(</span><span class="nx">error</span> <span class="o">===</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">1078 </span>          <span class="nx">m</span><span class="p">.</span><span class="nx">error</span><span class="p">()</span>
+<span class="lineno">1079 </span>        <span class="p">}</span>
+<span class="lineno">1080 </span>        <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">1081 </span>          <span class="nx">m</span><span class="p">.</span><span class="nx">load</span><span class="p">()</span>
+<span class="lineno">1082 </span>        <span class="p">}</span>
+<span class="lineno">1083 </span>      <span class="p">}</span>
+<span class="lineno">1084 </span>    <span class="p">}</span>
+<span class="lineno">1085 </span>  <span class="p">}</span>
+<span class="lineno">1086 </span>
+<span class="lineno">1087 </span>  <span class="c1">// Resolve id to uri</span>
+<span class="lineno">1088 </span>  <span class="c1">//处理依赖模块的url，把依赖模块的id转换为url并返回。(获取模块的全路径)</span>
+<span class="lineno">1089 </span>  <span class="nx">Module</span><span class="p">.</span><span class="nx">resolve</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">refUri</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">1090 </span>    <span class="c1">// Emit `resolve` event for plugins such as text plugin</span>
+<span class="lineno">1091 </span>    <span class="kd">var</span> <span class="nx">emitData</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">refUri</span><span class="o">:</span> <span class="nx">refUri</span> <span class="p">}</span>
+<span class="lineno">1092 </span>    <span class="nx">emit</span><span class="p">(</span><span class="s2">"resolve"</span><span class="p">,</span> <span class="nx">emitData</span><span class="p">)</span>
+<span class="lineno">1093 </span>
+<span class="lineno">1094 </span>    <span class="k">return</span> <span class="nx">emitData</span><span class="p">.</span><span class="nx">uri</span> <span class="o">||</span> <span class="nx">seajs</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">emitData</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">refUri</span><span class="p">)</span>
+<span class="lineno">1095 </span>  <span class="p">}</span>
+<span class="lineno">1096 </span>
+<span class="lineno">1097 </span>  <span class="c1">// Define a module</span>
+<span class="lineno">1098 </span>  <span class="nx">Module</span><span class="p">.</span><span class="nx">define</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">deps</span><span class="p">,</span> <span class="nx">factory</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">1099 </span>    <span class="kd">var</span> <span class="nx">argsLen</span> <span class="o">=</span> <span class="nx">arguments</span><span class="p">.</span><span class="nx">length</span>
+<span class="lineno">1100 </span>
+<span class="lineno">1101 </span>    <span class="c1">// define(factory)</span>
+<span class="lineno">1102 </span>    <span class="k">if</span> <span class="p">(</span><span class="nx">argsLen</span> <span class="o">===</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">1103 </span>      <span class="nx">factory</span> <span class="o">=</span> <span class="nx">id</span>
+<span class="lineno">1104 </span>      <span class="nx">id</span> <span class="o">=</span> <span class="kc">undefined</span>
+<span class="lineno">1105 </span>    <span class="p">}</span>
+<span class="lineno">1106 </span>    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">argsLen</span> <span class="o">===</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">1107 </span>      <span class="nx">factory</span> <span class="o">=</span> <span class="nx">deps</span>
+<span class="lineno">1108 </span>
+<span class="lineno">1109 </span>      <span class="c1">// define(deps, factory)</span>
+<span class="lineno">1110 </span>      <span class="k">if</span> <span class="p">(</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">id</span><span class="p">))</span> <span class="p">{</span>
+<span class="lineno">1111 </span>        <span class="nx">deps</span> <span class="o">=</span> <span class="nx">id</span>
+<span class="lineno">1112 </span>        <span class="nx">id</span> <span class="o">=</span> <span class="kc">undefined</span>
+<span class="lineno">1113 </span>      <span class="p">}</span>
+<span class="lineno">1114 </span>      <span class="c1">// define(id, factory)</span>
+<span class="lineno">1115 </span>      <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">1116 </span>        <span class="nx">deps</span> <span class="o">=</span> <span class="kc">undefined</span>
+<span class="lineno">1117 </span>      <span class="p">}</span>
+<span class="lineno">1118 </span>    <span class="p">}</span>
+<span class="lineno">1119 </span>
+<span class="lineno">1120 </span>    <span class="c1">// Parse dependencies according to the module factory code</span>
+<span class="lineno">1121 </span>    <span class="c1">//此处调用应当在fis3中实现</span>
+<span class="lineno">1122 </span>    <span class="c1">//找出代码中声明的依赖ID</span>
+<span class="lineno">1123 </span>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">deps</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">isFunction</span><span class="p">(</span><span class="nx">factory</span><span class="p">))</span> <span class="p">{</span>
+<span class="lineno">1124 </span>      <span class="c1">//获取代码中声明的依赖关系</span>
+<span class="lineno">1125 </span>      <span class="nx">deps</span> <span class="o">=</span> <span class="k">typeof</span> <span class="nx">parseDependencies</span> <span class="o">===</span> <span class="s2">"undefined"</span> <span class="o">?</span> <span class="cp">[]</span> <span class="o">:</span> <span class="nx">parseDependencies</span><span class="p">(</span><span class="nx">factory</span><span class="p">.</span><span class="nx">toString</span><span class="p">())</span>
+<span class="lineno">1126 </span>    <span class="p">}</span>
+<span class="lineno">1127 </span>
+<span class="lineno">1128 </span>    <span class="kd">var</span> <span class="nx">meta</span> <span class="o">=</span> <span class="p">{</span>
+<span class="lineno">1129 </span>      <span class="nx">id</span><span class="o">:</span> <span class="nx">id</span><span class="p">,</span>
+<span class="lineno">1130 </span>      <span class="nx">uri</span><span class="o">:</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">id</span><span class="p">),</span>
+<span class="lineno">1131 </span>      <span class="nx">deps</span><span class="o">:</span> <span class="nx">deps</span><span class="p">,</span>
+<span class="lineno">1132 </span>      <span class="nx">factory</span><span class="o">:</span> <span class="nx">factory</span>
+<span class="lineno">1133 </span>    <span class="p">}</span>
+<span class="lineno">1134 </span>
+<span class="lineno">1135 </span>    <span class="c1">// Try to derive uri in IE6-9 for anonymous modules</span>
+<span class="lineno">1136 </span>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isWebWorker</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">meta</span><span class="p">.</span><span class="nx">uri</span> <span class="o">&amp;&amp;</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">attachEvent</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nx">getCurrentScript</span> <span class="o">!==</span> <span class="s2">"undefined"</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">1137 </span>      <span class="kd">var</span> <span class="nx">script</span> <span class="o">=</span> <span class="nx">getCurrentScript</span><span class="p">()</span>
+<span class="lineno">1138 </span>
+<span class="lineno">1139 </span>      <span class="k">if</span> <span class="p">(</span><span class="nx">script</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">1140 </span>        <span class="nx">meta</span><span class="p">.</span><span class="nx">uri</span> <span class="o">=</span> <span class="nx">script</span><span class="p">.</span><span class="nx">src</span>
+<span class="lineno">1141 </span>      <span class="p">}</span>
+<span class="lineno">1142 </span>
+<span class="lineno">1143 </span>      <span class="c1">// NOTE: If the id-deriving methods above is failed, then falls back</span>
+<span class="lineno">1144 </span>      <span class="c1">// to use onload event to get the uri</span>
+<span class="lineno">1145 </span>    <span class="p">}</span>
+<span class="lineno">1146 </span>
+<span class="lineno">1147 </span>    <span class="c1">// Emit `define` event, used in nocache plugin, seajs node version etc</span>
+<span class="lineno">1148 </span>    <span class="nx">emit</span><span class="p">(</span><span class="s2">"define"</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span>
+<span class="lineno">1149 </span>
+<span class="lineno">1150 </span>    <span class="nx">meta</span><span class="p">.</span><span class="nx">uri</span> <span class="o">?</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">meta</span><span class="p">.</span><span class="nx">uri</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="o">:</span>
+<span class="lineno">1151 </span>      <span class="c1">// Save information for "saving" work in the script onload event</span>
+<span class="lineno">1152 </span>      <span class="nx">anonymousMeta</span> <span class="o">=</span> <span class="nx">meta</span>
+<span class="lineno">1153 </span>  <span class="p">}</span>
+<span class="lineno">1154 </span>
+<span class="lineno">1155 </span>  <span class="c1">// Save meta data to cachedMods</span>
+<span class="lineno">1156 </span>  <span class="nx">Module</span><span class="p">.</span><span class="nx">save</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">uri</span><span class="p">,</span> <span class="nx">meta</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">1157 </span>    <span class="kd">var</span> <span class="nx">mod</span> <span class="o">=</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">uri</span><span class="p">)</span>
+<span class="lineno">1158 </span>
+<span class="lineno">1159 </span>    <span class="c1">// Do NOT override already saved modules</span>
+<span class="lineno">1160 </span>    <span class="k">if</span> <span class="p">(</span><span class="nx">mod</span><span class="p">.</span><span class="nx">status</span> <span class="o">&lt;</span> <span class="nx">STATUS</span><span class="p">.</span><span class="nx">SAVED</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">1161 </span>      <span class="nx">mod</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">meta</span><span class="p">.</span><span class="nx">id</span> <span class="o">||</span> <span class="nx">uri</span>
+<span class="lineno">1162 </span>      <span class="nx">mod</span><span class="p">.</span><span class="nx">dependencies</span> <span class="o">=</span> <span class="nx">meta</span><span class="p">.</span><span class="nx">deps</span> <span class="o">||</span> <span class="cp">[]</span>
+<span class="lineno">1163 </span>      <span class="nx">mod</span><span class="p">.</span><span class="nx">factory</span> <span class="o">=</span> <span class="nx">meta</span><span class="p">.</span><span class="nx">factory</span>
+<span class="lineno">1164 </span>      <span class="nx">mod</span><span class="p">.</span><span class="nx">status</span> <span class="o">=</span> <span class="nx">STATUS</span><span class="p">.</span><span class="nx">SAVED</span>
+<span class="lineno">1165 </span>
+<span class="lineno">1166 </span>      <span class="nx">emit</span><span class="p">(</span><span class="s2">"save"</span><span class="p">,</span> <span class="nx">mod</span><span class="p">)</span>
+<span class="lineno">1167 </span>    <span class="p">}</span>
+<span class="lineno">1168 </span>  <span class="p">}</span>
+<span class="lineno">1169 </span>
+<span class="lineno">1170 </span>  <span class="c1">// Get an existed module or create a new one</span>
+<span class="lineno">1171 </span>  <span class="nx">Module</span><span class="p">.</span><span class="nx">get</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">uri</span><span class="p">,</span> <span class="nx">deps</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">1172 </span>    <span class="k">return</span> <span class="nx">cachedMods</span><span class="cp">[</span><span class="nx">uri</span><span class="cp">]</span> <span class="o">||</span> <span class="p">(</span><span class="nx">cachedMods</span><span class="cp">[</span><span class="nx">uri</span><span class="cp">]</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Module</span><span class="p">(</span><span class="nx">uri</span><span class="p">,</span> <span class="nx">deps</span><span class="p">))</span>
+<span class="lineno">1173 </span>  <span class="p">}</span>
+<span class="lineno">1174 </span>
+<span class="lineno">1175 </span>  <span class="cm">/*模块加载: 第2步*/</span>
+<span class="lineno">1176 </span>  <span class="cm">/*开始整个加载流程，状态初始化为FETCHING到SAVED</span>
+<span class="lineno">1177 </span><span class="cm">   * @param ids 依赖模块</span>
+<span class="lineno">1178 </span><span class="cm">   * @param callback 模块id</span>
+<span class="lineno">1179 </span><span class="cm">   * @param uri 获取uri模块</span>
+<span class="lineno">1180 </span><span class="cm">   */</span>
+<span class="lineno">1181 </span>  <span class="c1">// Use function is equal to load a anonymous module</span>
+<span class="lineno">1182 </span>  <span class="nx">Module</span><span class="p">.</span><span class="nx">use</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ids</span><span class="p">,</span> <span class="nx">callback</span><span class="p">,</span> <span class="nx">uri</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">1183 </span>    <span class="kd">var</span> <span class="nx">mod</span> <span class="o">=</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">uri</span><span class="p">,</span> <span class="nx">isArray</span><span class="p">(</span><span class="nx">ids</span><span class="p">)</span> <span class="o">?</span> <span class="nx">ids</span> <span class="o">:</span> <span class="cp">[</span><span class="nx">ids</span><span class="cp">]</span><span class="p">)</span>
+<span class="lineno">1184 </span>
+<span class="lineno">1185 </span>    <span class="nx">mod</span><span class="p">.</span><span class="nx">_entry</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">mod</span><span class="p">)</span> <span class="c1">//表示在模块加载完成之后需要调用callback的模块</span>
+<span class="lineno">1186 </span>    <span class="nx">mod</span><span class="p">.</span><span class="nx">history</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="lineno">1187 </span>    <span class="nx">mod</span><span class="p">.</span><span class="nx">remain</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">//未加载的模块个数</span>
+<span class="lineno">1188 </span>
+<span class="lineno">1189 </span>    <span class="nx">mod</span><span class="p">.</span><span class="nx">callback</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">1190 </span>      <span class="cm">/*模块加载: 第5步*/</span>
+<span class="lineno">1191 </span>      <span class="c1">// 在回调函数中，</span>
+<span class="lineno">1192 </span>      <span class="c1">// 通过exports暴露模块及其依赖模块的接口，</span>
+<span class="lineno">1193 </span>      <span class="kd">var</span> <span class="nx">exports</span> <span class="o">=</span> <span class="cp">[]</span>
+<span class="lineno">1194 </span>      <span class="kd">var</span> <span class="nx">uris</span> <span class="o">=</span> <span class="nx">mod</span><span class="p">.</span><span class="nx">resolve</span><span class="p">()</span>
+<span class="lineno">1195 </span>
+<span class="lineno">1196 </span>      <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">uris</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">1197 </span>        <span class="nx">exports</span><span class="cp">[</span><span class="nx">i</span><span class="cp">]</span> <span class="o">=</span> <span class="nx">cachedMods</span><span class="cp">[</span><span class="nx">uris</span><span class="err">[</span><span class="nx">i</span><span class="cp">]</span><span class="p">].</span><span class="nx">exec</span><span class="p">()</span>
+<span class="lineno">1198 </span>      <span class="p">}</span>
+<span class="lineno">1199 </span>
+<span class="lineno">1200 </span>      <span class="c1">// 通过apply方法，将exports作为参数，调用global.callback方法;</span>
+<span class="lineno">1201 </span>      <span class="k">if</span> <span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">1202 </span>        <span class="nx">callback</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">global</span><span class="p">,</span> <span class="nx">exports</span><span class="p">)</span>
+<span class="lineno">1203 </span>      <span class="p">}</span>
+<span class="lineno">1204 </span>
+<span class="lineno">1205 </span>      <span class="cm">/*最后删除无用的变量，释放内存。*/</span>
+<span class="lineno">1206 </span>      <span class="k">delete</span> <span class="nx">mod</span><span class="p">.</span><span class="nx">callback</span>
+<span class="lineno">1207 </span>      <span class="k">delete</span> <span class="nx">mod</span><span class="p">.</span><span class="nx">history</span>
+<span class="lineno">1208 </span>      <span class="k">delete</span> <span class="nx">mod</span><span class="p">.</span><span class="nx">remain</span>
+<span class="lineno">1209 </span>      <span class="k">delete</span> <span class="nx">mod</span><span class="p">.</span><span class="nx">_entry</span>
+<span class="lineno">1210 </span>    <span class="p">}</span>
+<span class="lineno">1211 </span>
+<span class="lineno">1212 </span>    <span class="cm">/*模块加载: 第3步*/</span>
+<span class="lineno">1213 </span>    <span class="nx">mod</span><span class="p">.</span><span class="nx">load</span><span class="p">()</span> <span class="c1">//当前 Module对象加载完毕之后调用load方法</span>
+<span class="lineno">1214 </span>  <span class="p">}</span>
+<span class="lineno">1215 </span>
+<span class="lineno">1216 </span>
+<span class="lineno">1217 </span>  <span class="c1">// Public API</span>
+<span class="lineno">1218 </span>
+<span class="lineno">1219 </span>  <span class="cm">/*模块加载: 第1步*/</span>
+<span class="lineno">1220 </span>  <span class="cm">/**</span>
+<span class="lineno">1221 </span><span class="cm">   * 用来在页面中加载一个或多个模块</span>
+<span class="lineno">1222 </span><span class="cm">   * @param ids 模块名 （文件路径）</span>
+<span class="lineno">1223 </span><span class="cm">   * @param callback 回调函数, 当所有模块被加载并执行之后调用</span>
+<span class="lineno">1224 </span><span class="cm">   */</span>
+<span class="lineno">1225 </span>  <span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ids</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">1226 </span>    <span class="nx">Module</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">ids</span><span class="p">,</span> <span class="nx">callback</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">cwd</span> <span class="o">+</span> <span class="s2">"_use_"</span> <span class="o">+</span> <span class="nx">cid</span><span class="p">())</span>
+<span class="lineno">1227 </span>    <span class="k">return</span> <span class="nx">seajs</span>
+<span class="lineno">1228 </span>  <span class="p">}</span>
+<span class="lineno">1229 </span>
+<span class="lineno">1230 </span>  <span class="nx">Module</span><span class="p">.</span><span class="nx">define</span><span class="p">.</span><span class="nx">cmd</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="lineno">1231 </span>  <span class="nx">global</span><span class="p">.</span><span class="nx">define</span> <span class="o">=</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">define</span>
+<span class="lineno">1232 </span>
+<span class="lineno">1233 </span>
+<span class="lineno">1234 </span>  <span class="c1">// For Developers</span>
+<span class="lineno">1235 </span>
+<span class="lineno">1236 </span>  <span class="nx">seajs</span><span class="p">.</span><span class="nx">Module</span> <span class="o">=</span> <span class="nx">Module</span>
+<span class="lineno">1237 </span>  <span class="nx">data</span><span class="p">.</span><span class="nx">fetchedList</span> <span class="o">=</span> <span class="nx">fetchedList</span>
+<span class="lineno">1238 </span>  <span class="nx">data</span><span class="p">.</span><span class="nx">cid</span> <span class="o">=</span> <span class="nx">cid</span>
+<span class="lineno">1239 </span>
+<span class="lineno">1240 </span>  <span class="nx">seajs</span><span class="p">.</span><span class="nx">require</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">1241 </span>    <span class="kd">var</span> <span class="nx">mod</span> <span class="o">=</span> <span class="nx">Module</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">Module</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">id</span><span class="p">))</span>
+<span class="lineno">1242 </span>    <span class="k">if</span> <span class="p">(</span><span class="nx">mod</span><span class="p">.</span><span class="nx">status</span> <span class="o">&lt;</span> <span class="nx">STATUS</span><span class="p">.</span><span class="nx">EXECUTING</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">1243 </span>      <span class="nx">mod</span><span class="p">.</span><span class="nx">onload</span><span class="p">()</span>
+<span class="lineno">1244 </span>      <span class="nx">mod</span><span class="p">.</span><span class="nx">exec</span><span class="p">()</span>
+<span class="lineno">1245 </span>    <span class="p">}</span>
+<span class="lineno">1246 </span>    <span class="k">return</span> <span class="nx">mod</span><span class="p">.</span><span class="nx">exports</span>
+<span class="lineno">1247 </span>  <span class="p">}</span>
+<span class="lineno">1248 </span>
+<span class="lineno">1249 </span>  <span class="cm">/**</span>
+<span class="lineno">1250 </span><span class="cm">   * config.js - The configuration for the loader</span>
+<span class="lineno">1251 </span><span class="cm">   */</span>
+<span class="lineno">1252 </span>
+<span class="lineno">1253 </span>  <span class="c1">// The root path to use for id2uri parsing</span>
+<span class="lineno">1254 </span>  <span class="c1">// sea.js所在的目录</span>
+<span class="lineno">1255 </span>  <span class="nx">data</span><span class="p">.</span><span class="nx">base</span> <span class="o">=</span> <span class="nx">loaderDir</span>
+<span class="lineno">1256 </span>
+<span class="lineno">1257 </span>  <span class="c1">// The loader directory</span>
+<span class="lineno">1258 </span>  <span class="c1">// sea.js所在的目录</span>
+<span class="lineno">1259 </span>  <span class="nx">data</span><span class="p">.</span><span class="nx">dir</span> <span class="o">=</span> <span class="nx">loaderDir</span>
+<span class="lineno">1260 </span>
+<span class="lineno">1261 </span>  <span class="c1">// The loader's full path</span>
+<span class="lineno">1262 </span>  <span class="c1">// sea.js的全路径</span>
+<span class="lineno">1263 </span>  <span class="nx">data</span><span class="p">.</span><span class="nx">loader</span> <span class="o">=</span> <span class="nx">loaderPath</span>
+<span class="lineno">1264 </span>
+<span class="lineno">1265 </span>  <span class="c1">// The current working directory</span>
+<span class="lineno">1266 </span>  <span class="nx">data</span><span class="p">.</span><span class="nx">cwd</span> <span class="o">=</span> <span class="nx">cwd</span>
+<span class="lineno">1267 </span>
+<span class="lineno">1268 </span>  <span class="c1">// The charset for requesting files</span>
+<span class="lineno">1269 </span>  <span class="nx">data</span><span class="p">.</span><span class="nx">charset</span> <span class="o">=</span> <span class="s2">"utf-8"</span>
+<span class="lineno">1270 </span>
+<span class="lineno">1271 </span>  <span class="c1">// @Retention(RetentionPolicy.SOURCE)</span>
+<span class="lineno">1272 </span>  <span class="c1">// The CORS options, Don't set CORS on default.</span>
+<span class="lineno">1273 </span>  <span class="c1">//</span>
+<span class="lineno">1274 </span>  <span class="c1">//data.crossorigin = undefined</span>
+<span class="lineno">1275 </span>
+<span class="lineno">1276 </span>  <span class="c1">// data.alias - An object containing shorthands of module id 别名配置</span>
+<span class="lineno">1277 </span>  <span class="c1">// data.paths - An object containing path shorthands in module id 路径配置</span>
+<span class="lineno">1278 </span>  <span class="c1">// data.vars - The {xxx} variables in module id 变量配置</span>
+<span class="lineno">1279 </span>  
+<span class="lineno">1280 </span>  <span class="c1">// data.map 是一个数组，输入的每个元素又是一个数组或者函数，如果是一个数组，则将url中数组的第一个元素替换为第二个元素，如果为函数则将url作为参数传入函数，返回解析后的url</span>
+<span class="lineno">1281 </span>  <span class="c1">// data.map - An array containing rules to map module uri 映射配置</span>
+<span class="lineno">1282 </span>  <span class="c1">// data.debug - Debug mode. The default value is false</span>
+<span class="lineno">1283 </span>
+<span class="lineno">1284 </span>  <span class="nx">seajs</span><span class="p">.</span><span class="nx">config</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">configData</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">1285 </span>
+<span class="lineno">1286 </span>    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">key</span> <span class="k">in</span> <span class="nx">configData</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">1287 </span>      <span class="kd">var</span> <span class="nx">curr</span> <span class="o">=</span> <span class="nx">configData</span><span class="cp">[</span><span class="nx">key</span><span class="cp">]</span>
+<span class="lineno">1288 </span>      <span class="kd">var</span> <span class="nx">prev</span> <span class="o">=</span> <span class="nx">data</span><span class="cp">[</span><span class="nx">key</span><span class="cp">]</span>
+<span class="lineno">1289 </span>
+<span class="lineno">1290 </span>      <span class="c1">// Merge object config such as alias, vars</span>
+<span class="lineno">1291 </span>      <span class="k">if</span> <span class="p">(</span><span class="nx">prev</span> <span class="o">&amp;&amp;</span> <span class="nx">isObject</span><span class="p">(</span><span class="nx">prev</span><span class="p">))</span> <span class="p">{</span>
+<span class="lineno">1292 </span>        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">k</span> <span class="k">in</span> <span class="nx">curr</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">1293 </span>          <span class="nx">prev</span><span class="cp">[</span><span class="nx">k</span><span class="cp">]</span> <span class="o">=</span> <span class="nx">curr</span><span class="cp">[</span><span class="nx">k</span><span class="cp">]</span>
+<span class="lineno">1294 </span>        <span class="p">}</span>
+<span class="lineno">1295 </span>      <span class="p">}</span>
+<span class="lineno">1296 </span>      <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">1297 </span>        <span class="c1">// Concat array config such as map</span>
+<span class="lineno">1298 </span>        <span class="k">if</span> <span class="p">(</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">prev</span><span class="p">))</span> <span class="p">{</span>
+<span class="lineno">1299 </span>          <span class="nx">curr</span> <span class="o">=</span> <span class="nx">prev</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">curr</span><span class="p">)</span>
+<span class="lineno">1300 </span>        <span class="p">}</span>
+<span class="lineno">1301 </span>        <span class="c1">// Make sure that `data.base` is an absolute path</span>
+<span class="lineno">1302 </span>        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">key</span> <span class="o">===</span> <span class="s2">"base"</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">1303 </span>          <span class="c1">// Make sure end with "/"</span>
+<span class="lineno">1304 </span>          <span class="k">if</span> <span class="p">(</span><span class="nx">curr</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">!==</span> <span class="s2">"/"</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">1305 </span>            <span class="nx">curr</span> <span class="o">+=</span> <span class="s2">"/"</span>
+<span class="lineno">1306 </span>          <span class="p">}</span>
+<span class="lineno">1307 </span>          <span class="nx">curr</span> <span class="o">=</span> <span class="nx">addBase</span><span class="p">(</span><span class="nx">curr</span><span class="p">)</span>
+<span class="lineno">1308 </span>        <span class="p">}</span>
+<span class="lineno">1309 </span>
+<span class="lineno">1310 </span>        <span class="c1">// Set config</span>
+<span class="lineno">1311 </span>        <span class="nx">data</span><span class="cp">[</span><span class="nx">key</span><span class="cp">]</span> <span class="o">=</span> <span class="nx">curr</span>
+<span class="lineno">1312 </span>      <span class="p">}</span>
+<span class="lineno">1313 </span>    <span class="p">}</span>
+<span class="lineno">1314 </span>
+<span class="lineno">1315 </span>    <span class="nx">emit</span><span class="p">(</span><span class="s2">"config"</span><span class="p">,</span> <span class="nx">configData</span><span class="p">)</span>
+<span class="lineno">1316 </span>    <span class="k">return</span> <span class="nx">seajs</span>
+<span class="lineno">1317 </span>  <span class="p">}</span>
+<span class="lineno">1318 </span>
+<span class="lineno">1319 </span><span class="p">})(</span><span class="k">this</span><span class="p">);</span>
+</pre></div>
+
+
+</body></html>
