@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import store from '../Store.js';
+import SummaryDumb from './SummaryDumb';
 
 class Summary extends Component{
 
@@ -30,12 +31,7 @@ class Summary extends Component{
   }
 
   render(){
-    const {caption} = this.props;
-    return (
-      <div>
-        Summary: {this.state.sum}
-      </div>
-    );
+    return (<SummaryDumb sum={this.state.sum} />);
   }
 
   componentDidMount(){

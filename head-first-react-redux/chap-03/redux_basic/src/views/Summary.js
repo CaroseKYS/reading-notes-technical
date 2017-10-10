@@ -30,7 +30,6 @@ class Summary extends Component{
   }
 
   render(){
-    const {caption} = this.props;
     return (
       <div>
         Summary: {this.state.sum}
