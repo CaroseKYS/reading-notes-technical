@@ -1,8 +1,9 @@
 import React from 'react';
 import AddTodo from './AddTodo.js';
 import TodoList from './TodoList.js';
+import './style.css';
 
-export default () => {
+const Todos = () => {
   return (
     <div className="todos">
       <AddTodo />
@@ -10,3 +11,4 @@ export default () => {
     </div>
   );
 };
+export default Todos;
