@@ -1,6 +1,7 @@
 # gcc 和 DEV C++ 产出的内容
 *.out
 *.exe
+*.class
 # Logs
 logs
 *.log
