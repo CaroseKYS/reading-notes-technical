@@ -2,6 +2,7 @@
 *.out
 *.exe
 *.class
+.metadata
 # Logs
 logs
 *.log
