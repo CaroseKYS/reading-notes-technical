@@ -4,7 +4,8 @@
 using namespace std;
 
 int main (void){
-	int capital, years, rate;
+	int capital, years;
+        double rate;
 	
 	do{
 		cout << "capital:";
@@ -15,5 +16,5 @@ int main (void){
 		cin  >> rate;
 		
 		cout << "Sum of capital and interests: " << capital * pow(1 + rate, years) << endl;
-	}while(1 > 0);
+	}while(capital > 0);
 }
