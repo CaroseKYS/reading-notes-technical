@@ -9,7 +9,7 @@ int main (void){
 	cout << "Please enter a char: ";
 	cin  >> c;
 	
-	cout << "Your enter is: " << c << endl;
+	cout << "Your enter is\7: " << c << endl;
 	
 	cout << "The ciphertext is " << (char)((c - 'a' + 3) % 26 + 'a') << endl;
 	
