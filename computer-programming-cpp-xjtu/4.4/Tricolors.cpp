@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <cstring>
 
 using namespace std;
 
@@ -32,6 +33,8 @@ int main(void){
 			
 		}
 	}
+	
+	cout << strlen("123") << endl;
 	
 	return 0;
 }
