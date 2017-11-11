@@ -56,7 +56,7 @@ void Automobile::play_mp3(char *ps){
 	cout << str << endl;
 	mciSendString(str, NULL, 0, NULL);
 	//在dev c++环境中还要设置
-	//工具-编译器选项-编译器-在连接器命令加入以下命令：-lwinmm- 
+	//工具-编译器选项-编译器-在连接器命令加入以下命令：-lwinmm
 	//mciSendStringA(str, NULL, 0, Null);// VC2008
 	//mciSendString(str, NULL, 0, Null);//VC6.0
 	
