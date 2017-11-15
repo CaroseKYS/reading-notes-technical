@@ -1,29 +1,9 @@
 #include <iostream>
 #include <windows.h>
 #include <cstring>
+#include "Person.h"
 
 using namespace std;
-
-class Person{
-	private:
-		char *name;
-		char sex;
-		char pid[20];
-		int weight;
-		int high;
-	
-	public:
-		Person();
-		Person(char *, char s, char *p, int w, int h);
-		void change_data(char *, char s, char *p, int w, int h);
-		void walking(int k, int v); //以速度v行走k步
-		void hearing(char *sentence); //将字符串小写变大写，大写变小写
-		void speak(int n); //说出整数number的英文句子
-		void writing(); // 在屏幕上画出汉字 "曲"
-		void print();//输出人的属性值 
-		void out(int a); //翻译小于1000的整数
-		~Person(); 
-};
 
 Person::Person(){
 	name = new char[4];
@@ -119,24 +99,4 @@ void Person::print(){
 
 void Person::out(int a){
 	cout << a << endl;
-}
-
-int main(){
-	Person jack("James Chen", 'M', "1234567890987654321", 160, 180);
-	jack.print();
-	
-	system("pause");
-	
-	jack.walking(20, 4);
-	jack.hearing("Hi, You are simple!");
-	
-	system("pause");
-	
-	jack.speak(1006);
-	system("pause");
-	
-	cout << endl;
-	jack.writing();
-	
-	return 0;
 }

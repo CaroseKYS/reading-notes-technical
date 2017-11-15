@@ -1,7 +1,10 @@
 # gcc 和 DEV C++ 产出的内容
 *.out
 *.exe
+*.o
+*.layout
 *.class
+Makefile.win
 .metadata
 # Logs
 logs
