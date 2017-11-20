@@ -27,6 +27,7 @@ Person::~Person(){
 	if(name != NULL){
 		delete []name;
 	}
+	cout << "Person " << name << " 的析构函数被执行。";
 }
 
 void Person::change_data(char * name, char s, char *p, int w, int h){

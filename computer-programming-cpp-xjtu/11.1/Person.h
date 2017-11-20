@@ -16,5 +16,5 @@ class Person{
 		void writing(); // 在屏幕上画出汉字 "曲"
 		void print();//输出人的属性值 
 		void out(int a); //翻译小于1000的整数
-		~Person(); 
+		virtual ~Person(); 
 };
