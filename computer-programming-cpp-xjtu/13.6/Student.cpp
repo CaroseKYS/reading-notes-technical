@@ -57,7 +57,18 @@ int main(){
 	} 
 	
 	Student stu("test", 'm', 10);
+	
+	cout << "----ÕıĞò¶Á----" << endl; 
+	
 	for(i = 0; i < NUM; i++){
+		in.read((char *) &stu, len);
+		stu.showMe();
+		cout << endl;
+	}
+	
+	cout << "----ÄæĞò¶Á----" << endl; 
+	for(i = 0; i < NUM; i++){
+		in.seekg(-(i + 1) * sizeof(stu), ios::end);
 		in.read((char *) &stu, len);
 		stu.showMe();
 		cout << endl;
